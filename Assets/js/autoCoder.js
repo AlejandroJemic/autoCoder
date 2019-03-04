@@ -16,7 +16,7 @@ $(function (){
 
 function resize(container) {
     container.resize(function () {
-        if (container.width() < 180) container.width(180);
+        if (container.width() < 230) container.width(230);
         if (container.height() < 65) container.height(65);
         if (container.width() > 2000) container.width(2000);
         if (container.height() > 2000) container.height(2000);
@@ -53,7 +53,7 @@ function setAlto(txt) {
 
 function setAncho(txt) {
     var element = getCurrentElement(txt);
-    if (txt.value < 180) txt.value = 180;
+    if (txt.value < 230) txt.value = 230;
     if (txt.value > 2000) txt.value = 2000;
     element.width(txt.value);
     element.children(".viewContainer").width(txt.value);
@@ -96,13 +96,10 @@ function AddElemnt(btn) {
     $newElement.width(300);
     $newElement.height(150);
 
-    $newElement.children(".viewContent").width(290);
-    $newElement.children(".viewContent").height(75);
+    $newElement.children(".viewContent").width(287);
+    $newElement.children(".viewContent").height(137);
     $newElement.children(".viewHeader").width(290);
     $newElement.children(".viewHeader").hide();
-    $newElement.children(".viewHeader").children("#Nombre").val("");
-    $newElement.children(".viewHeader").children("#alto").val("150");
-    $newElement.children(".viewHeader").children("#ancho").val("300");
 
     setid($newElement);
 
@@ -110,6 +107,9 @@ function AddElemnt(btn) {
     $newElement.resizable({ containment: ".maindiv" }).draggable({ containment: ".maindiv" });
     $newElement.resizable("option", "handles", "nw");
     $newElement.resize = resize($newElement);
+    $newElement.children(".viewHeader").find("#Nombre").val("");
+    $newElement.children(".viewHeader").find("#alto").val("150");
+    $newElement.children(".viewHeader").find("#ancho").val("300");
 }
 
 function delElemnt(btn) {
@@ -142,11 +142,11 @@ function newElement() {
     sElment += "</div>"
     sElment += "<div class='viewHeader'>"
     sElment += "<div class='d-inline-flex card-header'>"
-    sElment += "<input id='Nombre' type='text' value='vista1' class='form-control' name='Nombre' placeholder='Nombre'"
+    sElment += "<input id='Nombre' type='text' value='' class='form-control' name='Nombre' placeholder='Nombre'"
     sElment += "	onchange='setNombre(this)'>"
-    sElment += "<input id='alto' type='text' value='600' class='form-control alto' name='alto' placeholder='Alto'"
+    sElment += "<input id='alto' type='text' value='' class='form-control alto' name='alto' placeholder='Alto'"
     sElment += "	onchange='setAlto(this)'>"
-    sElment += "<input id='ancho' type='text' value='800' class='form-control' name='ancho' placeholder='Ancho'"
+    sElment += "<input id='ancho' type='text' value='' class='form-control' name='ancho' placeholder='Ancho'"
     sElment += "	onchange='setAncho(this)'>"
     sElment += "<button type='button' id='btnAdd' onclick='AddElemnt(this);' class='btn btn-success float-right'><img"
     sElment += "		src='../Assets/imgs/circle_plus.png' alt='del' style='width: 23px;' /></button>"
