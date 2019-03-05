@@ -28,10 +28,8 @@
     <!-- custom css ref -->
     <link rel="stylesheet" href="../Assets/css/autoCoder.css">
 </head>
-
 <body onload="set()">
     <!-- <span class="openMenuBtn" onclick="openNav()">&#9776;</span>   
-    
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
@@ -42,7 +40,6 @@
         </div>
     </div> -->
 
-
     <div class="container-fluid maindiv">
         <div class='Element viewContainer'>
             <div class="openHeaderBtn" onclick="closeHeader(this)">
@@ -50,24 +47,18 @@
             </div>
             <div class="viewHeader">
                 <div class='d-inline-flex card-header'>
-                    
                     <input id='Nombre' type='text' value='vista1' class='form-control' name='Nombre' placeholder='Nombre'
                         onchange='setNombre(this)'>
-
                     <input id='alto' type='text' value='600' class='form-control alto' name='alto' placeholder='Alto'
                         onchange='setAlto(this)'>
-
                     <input id='ancho' type='text' value='800' class='form-control' name='ancho' placeholder='Ancho'
                         onchange='setAncho(this)'>
-
                     <button type='button' id='btnAdd' onclick='AddElemnt(this);' class='btn btn-success float-right'><img
                             src='../Assets/imgs/circle_plus.png' alt='del' style='width: 23px;' /></button>
                 </div>
             </div>
-
             <div class='panel-body viewContent'></div>
         </div>
     </div>
 </body>
-
 </html>

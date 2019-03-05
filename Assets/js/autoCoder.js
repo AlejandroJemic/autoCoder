@@ -93,13 +93,13 @@ function AddElemnt(btn) {
     $newElement.css('position', 'relative');
     $newElement.css('display', 'inline-block');
 
-    $newElement.width(300);
-    $newElement.height(150);
+    $newElement.width(260);
+    $newElement.height(90);
 
-    $newElement.children(".viewContent").width(287);
-    $newElement.children(".viewContent").height(137);
-    $newElement.children(".viewHeader").width(290);
-    $newElement.children(".viewHeader").hide();
+    $newElement.children(".viewContent").width(250);
+    $newElement.children(".viewContent").height(80);
+    $newElement.children(".viewHeader").width(250);
+    //$newElement.children(".viewHeader").hide();
 
     setid($newElement);
 
