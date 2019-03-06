@@ -1,16 +1,17 @@
 .viewContainer{
     display: inline-block; border: solid 2px black; padding: 5px; background-color: whitesmoke;
-    
+    position: relative;
 }
 .maindiv{ 
     width: 2000px; height: 2000px;
 }
 .viewHeader{
-    border: solid 1px lightslategrey; background-color: #283a4d;
+    border: solid 1px lightslategrey; background-color:rgba(0,0,0,0.8);
     z-index: 1; top: 0; left: 0; position:absolute;
     padding-left: 15px;
     margin: 5px;
-    
+    width: 500px; 
+    height: 300px;     
 }
 .viewContent{
     border: solid 1px lightslategrey; text-align: center; height: 100%;
@@ -18,7 +19,7 @@
 } 
 
 .openHeaderBtn{
-    font-size: 30px !important; cursor:pointer; padding: 0; margin: 10px; color: white; 
+    font-size: 30px !important; cursor:pointer; padding: 0; margin: 10px; color: red; 
     z-index: 2; top: 0; left: 0; position:absolute
 }
 /* menu */

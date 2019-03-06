@@ -2,7 +2,7 @@
 function set() {
     $(".viewContent").height(alto.value);
     $(".viewContainer").width(ancho.value);
-    $(".viewHeader").width(ancho.value - 17);
+   // $(".viewHeader").width(ancho.value - 17);
     $(".viewContainer").resizable({ containment: ".maindiv" });
     setid($(".viewContainer"));
 
@@ -16,7 +16,7 @@ $(function (){
 
 function resize(container) {
     container.resize(function () {
-        if (container.width() < 230) container.width(230);
+        if (container.width() < 65) container.width(65);
         if (container.height() < 65) container.height(65);
         if (container.width() > 2000) container.width(2000);
         if (container.height() > 2000) container.height(2000);
@@ -25,7 +25,7 @@ function resize(container) {
         container.children(".viewContent").height(container.height()-2);
         container.children(".viewHeader").find("#alto").val(container.height());
         container.children(".viewHeader").find("#ancho").val(container.width());
-        container.children(".viewHeader").width(container.width() -15);
+        //container.children(".viewHeader").width(container.width() -15);
     });
 }
 
@@ -53,12 +53,12 @@ function setAlto(txt) {
 
 function setAncho(txt) {
     var element = getCurrentElement(txt);
-    if (txt.value < 230) txt.value = 230;
+    if (txt.value < 65) txt.value = 65;
     if (txt.value > 2000) txt.value = 2000;
     element.width(txt.value);
     element.children(".viewContainer").width(txt.value);
     element.children(".viewContent").width(txt.value);
-    element.children(".viewHeader").width(txt.value -15 );
+    //element.children(".viewHeader").width(txt.value -15 );
 }
 
 function uuid() {
@@ -98,8 +98,8 @@ function AddElemnt(btn) {
 
     $newElement.children(".viewContent").width(250);
     $newElement.children(".viewContent").height(80);
-    $newElement.children(".viewHeader").width(250);
-    //$newElement.children(".viewHeader").hide();
+    //$newElement.children(".viewHeader").width(250);
+    $newElement.children(".viewHeader").hide();
 
     setid($newElement);
 
@@ -122,7 +122,7 @@ function openHeader(btn) {
     $(child).show();
     $(child).css("z-index", "10000");
     $(btn).attr("onclick", "closeHeader(this)")
-    $(btn).css("color", "white")
+    //$(btn).css("color", "white")
     $(btn).css("z-index", "10001");
 }
 function closeHeader(btn) {
@@ -131,16 +131,16 @@ function closeHeader(btn) {
     $(child).hide();
     
     $(btn).attr("onclick", "openHeader(this)")
-    $(btn).css("color", "black")
+   // $(btn).css("color", "black")
 }
 
 function newElement() {
     var sElment = ""
     sElment += "<div class='Element viewContainer'>"
-    sElment += "<div class='openHeaderBtn' onclick='closeHeader(this)'>"
+    sElment += "<div class='openHeaderBtn' onclick='openHeader(this)'>"
     sElment += "<a>&#9776;</a>"
     sElment += "</div>"
-    sElment += "<div class='viewHeader'>"
+    sElment += "<div class='viewHeader' style='float:left;'>"
     sElment += "<div class='d-inline-flex card-header'>"
     sElment += "<input id='Nombre' type='text' value='' class='form-control' name='Nombre' placeholder='Nombre'"
     sElment += "	onchange='setNombre(this)'>"
