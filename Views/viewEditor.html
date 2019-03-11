@@ -1,47 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>View Editor</title>
-
-    <!-- jquery ref -->
-    <script src="../Assets/js/jquery/jquery-3.3.1.min.js"></script>
-
-    <!--jquery UI ref -->
-    <!--<link href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css"/>-->
-
-    <link href="../Assets/js/jquery-ui-1.11.2/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- jQuery UI Reference -->
-    <!-- <script src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script> -->
-    <script src="../Assets/js/jquery-ui-1.11.2/jquery-ui.min.js"></script>
-
-    <!-- bootstrap 4 ref -->
-    <link rel="stylesheet" href="../Assets/css/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-    <script src="../Assets/css/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
-
-    <!-- custom js ref -->
-    <script src="../Assets/js/autoCoder.js"></script>
-    <!-- custom css ref -->
-    <link rel="stylesheet" href="../Assets/css/autoCoder.css">
-</head>
-<body onload="set()">
-    <!-- <span class="openMenuBtn" onclick="openNav()">&#9776;</span>   
-    <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="overlay-content">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
-    </div> -->
-
+<body>
     <div class="container-fluid maindiv">
-        <div class='Element viewContainer'>
+        <div class='MainElement Element viewContainer'>
             <div class="openHeaderBtn" onclick="closeHeader(this)">
                 <a>&#9776;</a>
             </div>
@@ -54,11 +13,10 @@
                     <input id='ancho' type='text' value='800' class='form-control' name='ancho' placeholder='Ancho'
                         onchange='setAncho(this)'>
                     <button type='button' id='btnAdd' onclick='AddElemnt(this);' class='btn btn-success float-right'><img
-                            src='../Assets/imgs/circle_plus.png' alt='del' style='width: 23px;' /></button>
+                            src='../assets/imgs/circle_plus.png' alt='del' style='width: 23px;' /></button>
                 </div>
             </div>
             <div class='panel-body viewContent'></div>
         </div>
     </div>
 </body>
-</html>

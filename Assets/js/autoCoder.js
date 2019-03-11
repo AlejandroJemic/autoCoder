@@ -1,18 +1,42 @@
+var CurrentTab = 0;
 
 function set() {
-    $(".viewContent").height(alto.value);
-    $(".viewContainer").width(ancho.value);
-   // $(".viewHeader").width(ancho.value - 17);
-    $(".viewContainer").resizable({ containment: ".maindiv" });
-    setid($(".viewContainer"));
+    CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
+    var mainContainer    = $($(".MainElement")[CurrentTab]);
+    var sid = setid(mainContainer);
+    var inputAlto = $(mainContainer).find("#alto");
+    var inputAncho = $(mainContainer).find("#ancho");
 
-    $(".viewContainer").resize = resize($(".viewContainer"));
-};
+    $(mainContainer).height(inputAlto.val());
+    $(mainContainer).width(inputAncho.val());
+    // // $(".viewHeader").width(ancho.value - 17);
+    $(mainContainer).resizable({ containment: ".maindiv" });
+    $(mainContainer).resize = resize($(mainContainer));
 
-$(function (){
+    // //loop padres
+    // contaier.parents().each(function( index ) {
+    //     logElement(this,index);
+    // });
 
-    $(this).on('click', function() { $(this).children(".viewContent").hide(); });
+    //loop hijos
+    // $(this).children().each(function( childindex ) {
+    //logElement(index);
+    // });
+    logElement($(mainContainer), CurrentTab);
+}
+
+$(function () {
+    $(this).on('click', function () {
+        //$(this).children(".viewContent").hide();
+    });
 });
+
+function logElement(elm, index) {
+    console.log("[" + index + "] type:  " + $(elm).prop('nodeName'));
+    console.log("    id:    " + $(elm).prop("id"));
+    console.log("    class: " + $(elm).attr("class"));
+    console.log();
+}
 
 function resize(container) {
     container.resize(function () {
@@ -21,10 +45,10 @@ function resize(container) {
         if (container.width() > 2000) container.width(2000);
         if (container.height() > 2000) container.height(2000);
 
-        container.children(".viewContent").width(container.width()-2);
-        container.children(".viewContent").height(container.height()-2);
-        container.children(".viewHeader").find("#alto").val(container.height());
-        container.children(".viewHeader").find("#ancho").val(container.width());
+        $(container).children(".viewContent").width(container.width() - 2);
+        $(container).children(".viewContent").height(container.height() - 2);
+        $(container).children(".viewHeader").find("#alto").val(container.height());
+        $(container).children(".viewHeader").find("#ancho").val(container.width());
         //container.children(".viewHeader").width(container.width() -15);
     });
 }
@@ -34,6 +58,7 @@ function setid(element) {
     element.prop("id", sid + "Container");
     element.children(".viewContent").prop("id", sid + "Content");
     element.children(".viewHeader").prop("id", sid + "Header");
+    return sid;
 }
 
 function setNombre(txt) {
@@ -48,7 +73,7 @@ function setAlto(txt) {
     if (txt.value < 65) txt.value = 65;
     if (txt.value > 2000) txt.value = 2000;
     element.height(txt.value);
-    element.children(".viewContent").height(element.height()-3);
+    element.children(".viewContent").height(element.height() - 3);
 }
 
 function setAncho(txt) {
@@ -63,7 +88,8 @@ function setAncho(txt) {
 
 function uuid() {
     return 'xxx-xxx-xxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 }
@@ -75,14 +101,13 @@ function getCurrentElement(obj) {
 
 //devuelve contenido del elemento en el que estoy
 function getElementContent(element) {
-    return $("#" + $(element.children(".viewContent")).prop("id"));
+    return $(element).children(".viewContent");
 }
 
 //devuelve el header del elemento en el que estoy
 function getElementHeader(element) {
     return $("#" + $(element.children(".viewContent")).prop("id"));
 }
-
 
 function AddElemnt(btn) {
     var element = getCurrentElement(btn);
@@ -103,8 +128,12 @@ function AddElemnt(btn) {
 
     setid($newElement);
 
-    content.append($newElement);
-    $newElement.resizable({ containment: ".maindiv" }).draggable({ containment: ".maindiv" });
+    $(content).append($newElement);
+
+    CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
+    var mainContainer = $($(".MainElement")[CurrentTab]);
+    var mainContntent = $(mainContainer).children(".viewContent:first")
+    $newElement.resizable({ containment: mainContntent }).draggable({containment: mainContntent});
     $newElement.resizable("option", "handles", "nw");
     $newElement.resize = resize($newElement);
     $newElement.children(".viewHeader").find("#Nombre").val("");
@@ -118,20 +147,21 @@ function delElemnt(btn) {
 
 function openHeader(btn) {
     var element = getCurrentElement(btn);
-    var child =$(element).children(".viewHeader")
+    var child = $(element).children(".viewHeader")
     $(child).show();
     $(child).css("z-index", "10000");
     $(btn).attr("onclick", "closeHeader(this)")
     //$(btn).css("color", "white")
     $(btn).css("z-index", "10001");
 }
+
 function closeHeader(btn) {
     var element = getCurrentElement(btn);
-    var child =$(element).children(".viewHeader")
+    var child = $(element).children(".viewHeader")
     $(child).hide();
-    
+
     $(btn).attr("onclick", "openHeader(this)")
-   // $(btn).css("color", "black")
+    // $(btn).css("color", "black")
 }
 
 function newElement() {
@@ -149,8 +179,8 @@ function newElement() {
     sElment += "<input id='ancho' type='text' value='' class='form-control' name='ancho' placeholder='Ancho'"
     sElment += "	onchange='setAncho(this)'>"
     sElment += "<button type='button' id='btnAdd' onclick='AddElemnt(this);' class='btn btn-success float-right'><img"
-    sElment += "		src='../Assets/imgs/circle_plus.png' alt='del' style='width: 23px;' /></button>"
-    sElment += "<button type='button' id='btnDel' onclick='delElemnt(this);' class='btn btn-danger float-right'><img src='../Assets/imgs/circle_delete.png'"
+    sElment += "		src='../assets/imgs/circle_plus.png' alt='del' style='width: 23px;' /></button>"
+    sElment += "<button type='button' id='btnDel' onclick='delElemnt(this);' class='btn btn-danger float-right'><img src='../assets/imgs/circle_delete.png'"
     sElment += "	alt='add' style='width: 23px;' /></button>"
     sElment += "</div>"
     sElment += "</div>"
@@ -158,10 +188,53 @@ function newElement() {
     return sElment;
 }
 
-// function openNav() {
-//     document.getElementById("myNav").style.height = "300px";
-//   }
-  
-//   function closeNav() {
-//     document.getElementById("myNav").style.height = "0%";
-//   }
+function openNav() {
+    document.getElementById("myNav").style.height = "300px";
+  }
+
+  function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+  }
+
+$(document).ready(function () {
+
+    var addButton,
+        addButtonWidth = 29,
+        index = 0;
+
+    // create jqxTabs.
+    $('#jqxTabs').jqxTabs({
+        reorder: true,
+        theme: 'material',
+        showCloseButtons: true,
+        scrollPosition: 'both',
+        initTabContent: function (tab) {
+            // The 'tab' parameter represents the selected tab's index.
+            if (tab == 0) {
+                var pageIndex = tab + 1;
+                loadPage('viewEditor.html', pageIndex);
+
+            }
+        }
+    });
+
+    $('#jqxTabs').on('tabclick', function (event) {
+        var count = $('#unorderedList').find('li').length;
+        if (event.args.item == count - 1) {
+            $('#jqxTabs').jqxTabs('addAt', event.args.item, 'vista ' + count,
+                'Sample content number: ' + count);
+            //Manual initialization
+            //Commented because initialization is set in initTabContent event
+            loadPage('viewEditor.html', count);
+        }
+    });
+});
+
+var loadPage = function (url, tabIndex) {
+    console.log('Loading page via Ajax.')
+    $.get(url, function (data) {
+        $('#jqxTabs').jqxTabs('setContentAt', tabIndex - 1, data);
+        set();
+    });
+
+}
