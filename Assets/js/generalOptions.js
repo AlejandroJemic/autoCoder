@@ -1,15 +1,366 @@
+var jsonSuport = {
+	isArray: function(obj) {
+    	return Object.prototype.toString.call(obj) === '[object Array]';
+	},
+	isObject: function(obj){
+    	return obj !== undefined && obj !== null && obj.constructor == Object;
+	},
+	isBoolean: function(obj){
+    	return obj !== undefined && obj !== null && obj.constructor == Boolean;
+	},
+	isFunction: function (obj){
+    	return obj !== undefined && obj !== null && obj.constructor == Function;
+	},
+	isNumber: function(obj){
+    	return obj !== undefined && obj !== null && obj.constructor == Number;
+	},
+	isString: function(obj){
+    	return obj !== undefined && obj !== null && obj.constructor == String;
+	},
+	isInstanced: function(obj){
+		if(obj === undefined || obj === null) { return false; }
+		if(isArray(obj)) { return false; }
+		if(isBoolean(obj)) { return false; }
+		if(isFunction(obj)) { return false; }
+		if(isNumber(obj)) { return false; }
+		if(isObject(obj)) { return false; }
+		if(isString(obj)) { return false; }
+		return true;
+	},
+	HasProprty: function(obj,propertyName){
+		if(obj.hasOwnProperty(propertyName)){
+			return true;
+		}
+		else{return false;}
+	},
+	ForEachInJson: function(obj, ExecuteFunction ){
+		Object.keys(obj).forEach(ExecuteFunction(key));
+	},
+	CreateSelectForList: function(ParentElementHeader,obj,text,onchangeFunc){
+		var select = document.createElement("select");
+		$(select).addClass("form-control select col-4");
+		$(select).attr("placeholder", text);
+		$(select).attr("id", text);
+		$(select).attr("name", text);
+		$(select).change(function(){ onchangeFunc(select,obj); });
+
+		this.PopulateSelectFromList(select,obj,text);
+		$(ParentElementHeader).append(select);
+	},
+	PopulateSelectFromList: function(select,obj,text){
+		if(obj.length > 1){
+			$(select).append($('<option></option>').val(0).html(text));
+		}
+		if(this.isArray(obj)){
+			$.each(obj, function(i, p) {
+				$(select).append($('<option></option>').val(p.id).html(p.nombre));
+			});
+			if(obj.length == 1){
+				 $(select).val(1);
+			}
+		}
+	},
+}
+
+var generalOptions={
+	"plataformas_de_salida": [
+	  {
+		"id": 1,
+		"nombre": "html",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "pagina web"
+		  }
+		]
+	  },
+	  {
+		"id": 2,
+		"nombre": ".net",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "pagina web",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "aspx"
+			  },
+			  {
+				"id": 2,
+				"nombre": "mvc"
+			  }
+			]
+		  },
+		  {
+			"id": 2,
+			"nombre": "servicio",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "web api rest"
+			  },
+			  {
+				"id": 2,
+				"nombre": "wcf soap"
+			  }
+			]
+		  },
+		  {
+			"id": 3,
+			"nombre": "persistencia",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "entity Framework"
+			  },
+			  {
+				"id": 2,
+				"nombre": "ADO.net"
+			  },
+			  {
+				"id": 3,
+				"nombre": "api Consumer JSON"
+			  }
+			]
+		  }
+		]
+	  },
+	  {
+		"id": 3,
+		"nombre": "nodejs",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "pagina web",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "angular"
+			  },
+			  {
+				"id": 2,
+				"nombre": "react"
+			  },
+			  {
+				"id": 3,
+				"nombre": "template engine"
+			  }
+			]
+		  },
+		  {
+			"id": 2,
+			"nombre": "servicio",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "rest api"
+			  }
+			]
+		  },
+		  {
+			"id": 3,
+			"nombre": "persistencia",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "mssql"
+			  },
+			  {
+				"id": 2,
+				"nombre": "oracle"
+			  },
+			  {
+				"id": 3,
+				"nombre": "mariadeb"
+			  },
+			  {
+				"id": 4,
+				"nombre": "postegressql"
+			  },
+			  {
+				"id": 5,
+				"nombre": "mongoDB"
+			  }
+			]
+		  }
+		]
+	  },
+	  {
+		"id": 4,
+		"nombre": "android",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "aplicación movil nativa"
+		  }
+		]
+	  },
+	  {
+		"id": 5,
+		"nombre": "ios",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "aplicación movil nativa"
+		  }
+		]
+	  }
+	]
+  }
+
+
 /*
 menu general
-	plataformas
-		asp netv mvc 5 con entity framework
-		asp net web api
-		web react mern
-		web api node/express
-		app android nativo
-		app ios nativo swift 
+	{
+  "plataformas_de_salida": [
+    {
+      "id": 1,
+      "nombre": "html",
+      "tipos_de_salida": [
+        {
+          "id": 1,
+          "nombre": "pagina web"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": ".net",
+      "tipos_de_salida": [
+        {
+          "id": 1,
+          "nombre": "pagina web",
+          "opciones": [
+            {
+              "id": 1,
+              "nombre": "aspx"
+            },
+            {
+              "id": 2,
+              "nombre": "mvc"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "nombre": "servicio",
+          "opciones": [
+            {
+              "id": 1,
+              "nombre": "web api rest"
+            },
+            {
+              "id": 2,
+              "nombre": "wcf soap"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "nombre": "persistencia",
+          "opciones": [
+            {
+              "id": 1,
+              "nombre": "entity Framework"
+            },
+            {
+              "id": 2,
+              "nombre": "ADO.net"
+            },
+            {
+              "id": 3,
+              "nombre": "api Consumer JSON"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "nodejs",
+      "tipos_de_salida": [
+        {
+          "id": 1,
+          "nombre": "pagina web",
+          "opciones": [
+            {
+              "id": 1,
+              "nombre": "angular"
+            },
+            {
+              "id": 2,
+              "nombre": "react"
+            },
+            {
+              "id": 3,
+              "nombre": "template engine"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "nombre": "servicio",
+          "opciones": [
+            {
+              "id": 1,
+              "nombre": "rest api"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "nombre": "persistencia",
+          "opciones": [
+            {
+              "id": 1,
+              "nombre": "mssql"
+            },
+            {
+              "id": 2,
+              "nombre": "oracle"
+            },
+            {
+              "id": 3,
+              "nombre": "mariadeb"
+            },
+            {
+              "id": 4,
+              "nombre": "postegressql"
+            },
+            {
+              "id": 5,
+              "nombre": "mongoDB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "android",
+      "tipos_de_salida": [
+        {
+          "id": 1,
+          "nombre": "aplicacion movil nativa"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "ios",
+      "tipos_de_salida": [
+        {
+          "id": 1,
+          "nombre": "aplicacion movil nativa"
+        }
+      ]
+    }
+  ]
+}
 		
+
 	tamaño por paltaforma
-		
 		web
 			1024*768 
 			1280*800
@@ -64,10 +415,62 @@ menu general
 	orientación
 		retrato
 		apaisado
+		ambos
 
 
+opcines de servicio
+	url
+	paguinado
+	entrada
+		opciones de la entreada
+			tamaño pagina
+			numero pagina
+			orden paginas
+			verbo
+				get
+				post
+					haders contenttype,select,<lista contenttype>
+				put
+					haders contenttype,select,<lista contenttype>
+				patch
+					haders contentype,select,<lista contenttype>
+				delete
+			haders (lista)
+				acept,select,<lista contenttype>
+				contenttype,select,<lista contenttype>
+				nombre libre,input
 
-opciones de cada elemento
+			tipo de autenticacion
+				sin autenticacion
+				autenticacion basica (usuario y contrasña y cokkies)
+				autencicacion digerida (usuario y contrasña y cokkies)
+				apikey
+				tokens
+
+		opciones de cada elemento (servicio)
+			tipoDato,select,tipos de datos
+			nonbre
+			tabla asociada
+			campo asociado
+	salida
+		opciones de la salida
+			contenttype,select,<lista contenttype>
+			formato
+				json
+				xml
+			
+		opciones de cada elemento (servicio)
+			tipoDato,select,tipos de datos
+			nonbre
+			tabla asociada
+			campo asociado
+			condicion where de borde
+
+opciones de cada elemento (pagina web)
+	tipoelemento
+		unico
+		contenedor
+		listo
 	id,auto,string
 	idParent,auto,string
 	nombre,input,number
@@ -81,10 +484,13 @@ opciones de cada elemento
 	pading,input,number 
 	color,inpput,string
 	align,select,alineaciones
+	vertical-align,select, alineacione verticales
 	cssClass,input,string
 	bgColor,input,string
 	fontName,input,string
 	fontSize,input,number
+	tabla asociada
+	campo asociado
 	
 	tipos de datos
 		integer
@@ -94,6 +500,8 @@ opciones de cada elemento
 		time
 		datetime
 		boolean
+		list
+		object
 		
 	tipos de controles por plataforma
 		
@@ -333,5 +741,10 @@ opciones de cada elemento
 		derecha
 		centrado
 		justificado
+	
+	alineaciones verticales
+		arriba
+		centro
+		abajo
 	
 */

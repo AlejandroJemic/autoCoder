@@ -12,6 +12,12 @@ function set() {
     // // $(".viewHeader").width(ancho.value - 17);
     $(mainContainer).resizable({ containment: ".maindiv" });
     $(mainContainer).resize = resize($(mainContainer));
+    
+    var div = document.createElement("div");
+    $(div).addClass("row controldiv");
+    jsonSuport.CreateSelectForList(div, generalOptions.plataformas_de_salida, "plataforma", setSalidas);
+    $(mainContainer).children(".viewHeader").append(div);
+    
 
     // //loop padres
     // contaier.parents().each(function( index ) {
@@ -22,7 +28,7 @@ function set() {
     // $(this).children().each(function( childindex ) {
     //logElement(index);
     // });
-    logElement($(mainContainer), CurrentTab);
+    //logElement($(mainContainer), CurrentTab);
 }
 
 $(function () {
@@ -30,6 +36,25 @@ $(function () {
         //$(this).children(".viewContent").hide();
     });
 });
+
+function setSalidas(select,obj){
+    console.log("plataforma changed");
+    var div = $(select).closest(".controldiv");
+    $("#salida").remove();
+    $("#opciones").remove();
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tipos_de_salida")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].tipos_de_salida, "salida", setOpciones);
+    }
+}
+
+function setOpciones(select,obj){
+    console.log("salida changed");
+    var div = $(select).closest(".controldiv");
+    $("#opciones").remove();
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
+    }
+}
 
 function logElement(elm, index) {
     console.log("[" + index + "] type:  " + $(elm).prop('nodeName'));
