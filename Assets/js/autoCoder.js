@@ -42,8 +42,12 @@ function setSalidas(select,obj){
     var div = $(select).closest(".controldiv");
     $("#salida").remove();
     $("#opciones").remove();
+    $("#tamaños").remove();
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tipos_de_salida")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].tipos_de_salida, "salida", setOpciones);
+    }
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tamaños_pantalla")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].tamaños_pantalla, "tamaños", setTamaño);
     }
 }
 
@@ -54,6 +58,14 @@ function setOpciones(select,obj){
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
     }
+}
+
+function setTamaño(select,obj){
+    console.log("tamaño changed");
+    // var header = $(select).closest(".viewHeader");
+    // if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
+    //     jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
+    // }
 }
 
 function logElement(elm, index) {
