@@ -1,467 +1,403 @@
-var jsonSuport = {
-	isArray: function(obj) {
-    	return Object.prototype.toString.call(obj) === '[object Array]';
-	},
-	isObject: function(obj){
-    	return obj !== undefined && obj !== null && obj.constructor == Object;
-	},
-	isBoolean: function(obj){
-    	return obj !== undefined && obj !== null && obj.constructor == Boolean;
-	},
-	isFunction: function (obj){
-    	return obj !== undefined && obj !== null && obj.constructor == Function;
-	},
-	isNumber: function(obj){
-    	return obj !== undefined && obj !== null && obj.constructor == Number;
-	},
-	isString: function(obj){
-    	return obj !== undefined && obj !== null && obj.constructor == String;
-	},
-	isInstanced: function(obj){
-		if(obj === undefined || obj === null) { return false; }
-		if(isArray(obj)) { return false; }
-		if(isBoolean(obj)) { return false; }
-		if(isFunction(obj)) { return false; }
-		if(isNumber(obj)) { return false; }
-		if(isObject(obj)) { return false; }
-		if(isString(obj)) { return false; }
-		return true;
-	},
-	HasProprty: function(obj,propertyName){
-		if(obj.hasOwnProperty(propertyName)){
-			return true;
-		}
-		else{return false;}
-	},
-	ForEachInJson: function(obj, ExecuteFunction ){
-		Object.keys(obj).forEach(ExecuteFunction(key));
-	},
-	CreateSelectForList: function(ParentElementHeader,obj,text,onchangeFunc){
-		var select = document.createElement("select");
-		$(select).addClass("form-control select col-4");
-		$(select).attr("placeholder", text);
-		$(select).attr("id", text);
-		$(select).attr("name", text);
-		$(select).change(function(){ onchangeFunc(select,obj); });
-
-		this.PopulateSelectFromList(select,obj,text);
-		$(ParentElementHeader).append(select);
-	},
-	PopulateSelectFromList: function(select,obj,text){
-		if(obj.length > 1){
-			$(select).append($('<option></option>').val(0).html(text));
-		}
-		if(this.isArray(obj)){
-			$.each(obj, function(i, p) {
-				$(select).append($('<option></option>').val(p.id).html(p.nombre));
-			});
-			if(obj.length == 1){
-				 $(select).val(1);
-			}
-		}
-	}
-}
-
 var generalOptions={
-		"plataformas_de_salida": [
-			{
+	"plataformas_de_salida": [
+	  {
+		"id": 1,
+		"nombre": "html",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "pagina web",
+			"tamaños_pantalla": [
+			  {
 				"id": 1,
-				"nombre": "html",
-				"tipos_de_salida": [
-					{
-						"id": 1,
-						"nombre": "pagina web"
-					}
-				],
-				"tamaños_pantalla": [
-					{
-						"id": 1,
-						"nombre": "1024*768"
-					},
-					{
-						"id": 2,
-						"nombre": "1280*800"
-					},
-					{
-						"id": 3,
-						"nombre": "1360*768"
-					},
-					{
-						"id": 4,
-						"nombre": "1440*900"
-					},
-					{
-						"id": 5,
-						"nombre": "1600*900"
-					},
-					{
-						"id": 6,
-						"nombre": "1680*1050"
-					},
-					{
-						"id": 7,
-						"nombre": "1920*1080"
-					},
-					{
-						"id": 7,
-						"nombre": "2560*1440"
-					}
-				]
-			},
-			{
+				"nombre": "1024*768"
+			  },
+			  {
 				"id": 2,
-				"nombre": ".net",
-				"tipos_de_salida": [
-					{
-						"id": 1,
-						"nombre": "pagina web",
-						"opciones": [
-							{
-								"id": 1,
-								"nombre": "aspx"
-							},
-							{
-								"id": 2,
-								"nombre": "mvc"
-							}
-						]
-					},
-					{
-						"id": 2,
-						"nombre": "servicio",
-						"opciones": [
-							{
-								"id": 1,
-								"nombre": "web api rest"
-							},
-							{
-								"id": 2,
-								"nombre": "wcf soap"
-							}
-						]
-					},
-					{
-						"id": 3,
-						"nombre": "persistencia",
-						"opciones": [
-							{
-								"id": 1,
-								"nombre": "entity Framework"
-							},
-							{
-								"id": 2,
-								"nombre": "ADO.net"
-							},
-							{
-								"id": 3,
-								"nombre": "api Consumer JSON"
-							}
-						]
-					}
-				],
-				"tamaños_pantalla": [
-					{
-						"id": 1,
-						"nombre": "1024*768"
-					},
-					{
-						"id": 2,
-						"nombre": "1280*800"
-					},
-					{
-						"id": 3,
-						"nombre": "1360*768"
-					},
-					{
-						"id": 4,
-						"nombre": "1440*900"
-					},
-					{
-						"id": 5,
-						"nombre": "1600*900"
-					},
-					{
-						"id": 6,
-						"nombre": "1680*1050"
-					},
-					{
-						"id": 7,
-						"nombre": "1920*1080"
-					},
-					{
-						"id": 7,
-						"nombre": "2560*1440"
-					}
-				]
-			},
-			{
+				"nombre": "1280*800"
+			  },
+			  {
 				"id": 3,
-				"nombre": "nodejs",
-				"tipos_de_salida": [
-					{
-						"id": 1,
-						"nombre": "pagina web",
-						"opciones": [
-							{
-								"id": 1,
-								"nombre": "angular"
-							},
-							{
-								"id": 2,
-								"nombre": "react"
-							},
-							{
-								"id": 3,
-								"nombre": "template engine"
-							}
-						]
-					},
-					{
-						"id": 2,
-						"nombre": "servicio",
-						"opciones": [
-							{
-								"id": 1,
-								"nombre": "rest api"
-							}
-						]
-					},
-					{
-						"id": 3,
-						"nombre": "persistencia",
-						"opciones": [
-							{
-								"id": 1,
-								"nombre": "mssql"
-							},
-							{
-								"id": 2,
-								"nombre": "oracle"
-							},
-							{
-								"id": 3,
-								"nombre": "mariadeb"
-							},
-							{
-								"id": 4,
-								"nombre": "postegressql"
-							},
-							{
-								"id": 5,
-								"nombre": "mongoDB"
-							}
-						]
-					}
-				],
-				"tamaños_pantalla": [
-					{
-						"id": 1,
-						"nombre": "1024*768"
-					},
-					{
-						"id": 2,
-						"nombre": "1280*800"
-					},
-					{
-						"id": 3,
-						"nombre": "1360*768"
-					},
-					{
-						"id": 4,
-						"nombre": "1440*900"
-					},
-					{
-						"id": 5,
-						"nombre": "1600*900"
-					},
-					{
-						"id": 6,
-						"nombre": "1680*1050"
-					},
-					{
-						"id": 7,
-						"nombre": "1920*1080"
-					},
-					{
-						"id": 7,
-						"nombre": "2560*1440"
-					}
-				]
-			},
-			{
+				"nombre": "1360*768"
+			  },
+			  {
 				"id": 4,
-				"nombre": "android",
-				"tipos_de_salida": [
-					{
-						"id": 1,
-						"nombre": "aplicación movil nativa"
-					}
-				],
-				"tamaños_pantalla": [
-					{
-						"id": 1,
-						"nombre": "240*320-ldpi"
-					},
-					{
-						"id": 2,
-						"nombre": "240*400-ldpi"
-					},
-					{
-						"id": 3,
-						"nombre": "240*432-ldpi"
-					},
-					{
-						"id": 4,
-						"nombre": "320*480-mdpi"
-					},
-					{
-						"id": 5,
-						"nombre": "480*800-mdpi"
-					},
-					{
-						"id": 6,
-						"nombre": "480*854-mdpi"
-					},
-					{
-						"id": 7,
-						"nombre": "1024*600-mdpi"
-					},
-					{
-						"id": 7,
-						"nombre": "1280*800-mdpi"
-					},
-					{
-						"id": 8,
-						"nombre": "480*800-hdpi"
-					},
-					{
-						"id": 9,
-						"nombre": "480*854-hdpi"
-					},
-					{
-						"id": 10,
-						"nombre": "280*280-hdpi"
-					},
-					{
-						"id": 11,
-						"nombre": "320*320-hdpi"
-					},
-					{
-						"id": 11,
-						"nombre": "720*1280-xhdpi"
-					},
-					{
-						"id": 12,
-						"nombre": "1200*1290-xhdpi"
-					},
-					{
-						"id": 13,
-						"nombre": "2560*1600-xhdpi"
-					},
-					{
-						"id": 14,
-						"nombre": "768*1280-xhdpi"
-					},
-					{
-						"id": 15,
-						"nombre": "1080*1920-xxhdpi"
-					},
-					{
-						"id": 16,
-						"nombre": "1080*1920-xxhdpi"
-					},
-					{
-						"id": 17,
-						"nombre": "800*1280-tvdpi"
-					}
-				]
-			},
-			{
+				"nombre": "1440*900"
+			  },
+			  {
 				"id": 5,
-				"nombre": "ios",
-				"tipos_de_salida": [
-					{
-						"id": 1,
-						"nombre": "aplicación movil nativa"
-					}
-				],
-				"tamaños_pantalla": [
-					{
-						"id": 1,
-						"nombre": "828*1792-2x-iPhone XR"
-					},
-					{
-						"id": 2,
-						"nombre": "1125*2436-3x-iPhone XS"
-					},
-					{
-						"id": 3,
-						"nombre": "1242*2688-3x-iPhone XS Max"
-					},
-					{
-						"id": 4,
-						"nombre": "1125*2436-3x-iPhone X"
-					},
-					{
-						"id": 5,
-						"nombre": "1080*1920-2.6x-iPhone 8 Plus"
-					},
-					{
-						"id": 6,
-						"nombre": "750*1334-2x-iPhone 8"
-					},
-					{
-						"id": 7,
-						"nombre": "1080*1920-2.6x-iPhone 7 Plus"
-					},
-					{
-						"id": 7,
-						"nombre": "750*1334-2x-iPhone 7"
-					},
-					{
-						"id": 8,
-						"nombre": "1080*1920-2.6x-iPhone 6 Plus/6S Plus"
-					},
-					{
-						"id": 9,
-						"nombre": "750*1334-2x-iPhone 6/6S"
-					},
-					{
-						"id": 10,
-						"nombre": "640*1136-2x-iPhone 5"
-					},
-					{
-						"id": 10,
-						"nombre": "640*1136-2x-iPhone 5"
-					},
-					{
-						"id": 11,
-						"nombre": "640*1136-2x-iPod Touch"
-					},
-					{
-						"id": 12,
-						"nombre": "2048*2732-2x-iPad Pro"
-					},
-					{
-						"id": 13,
-						"nombre": "1536 x 2048-2x-iPad Third & Fourth Generation"
-					},
-					{
-						"id": 14,
-						"nombre": "1536*2048-2x-iPad Air 1 & 2"
-					},
-					{
-						"id": 15,
-						"nombre": "1536*2048-2x-iPad Mini 2 & 3"
-					},
-					{
-						"id": 16,
-						"nombre": "768*1024-iPad Mini"
-					}
-				]
-			}
+				"nombre": "1600*900"
+			  },
+			  {
+				"id": 6,
+				"nombre": "1680*1050"
+			  },
+			  {
+				"id": 7,
+				"nombre": "1920*1080"
+			  },
+			  {
+				"id": 7,
+				"nombre": "2560*1440"
+			  }
+			]
+		  }
 		]
-	}
+	  },
+	  {
+		"id": 2,
+		"nombre": ".net",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "pagina web",
+			"tamaños_pantalla": [
+			  {
+				"id": 1,
+				"nombre": "1024*768"
+			  },
+			  {
+				"id": 2,
+				"nombre": "1280*800"
+			  },
+			  {
+				"id": 3,
+				"nombre": "1360*768"
+			  },
+			  {
+				"id": 4,
+				"nombre": "1440*900"
+			  },
+			  {
+				"id": 5,
+				"nombre": "1600*900"
+			  },
+			  {
+				"id": 6,
+				"nombre": "1680*1050"
+			  },
+			  {
+				"id": 7,
+				"nombre": "1920*1080"
+			  },
+			  {
+				"id": 7,
+				"nombre": "2560*1440"
+			  }
+			],
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "aspx"
+			  },
+			  {
+				"id": 2,
+				"nombre": "mvc"
+			  }
+			]
+		  },
+		  {
+			"id": 2,
+			"nombre": "servicio",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "web api rest"
+			  },
+			  {
+				"id": 2,
+				"nombre": "wcf soap"
+			  }
+			]
+		  },
+		  {
+			"id": 3,
+			"nombre": "persistencia",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "entity Framework"
+			  },
+			  {
+				"id": 2,
+				"nombre": "ADO.net"
+			  },
+			  {
+				"id": 3,
+				"nombre": "api Consumer JSON"
+			  }
+			]
+		  }
+		]
+	  },
+	  {
+		"id": 3,
+		"nombre": "nodejs",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "pagina web",
+			"tamaños_pantalla": [
+			  {
+				"id": 1,
+				"nombre": "1024*768"
+			  },
+			  {
+				"id": 2,
+				"nombre": "1280*800"
+			  },
+			  {
+				"id": 3,
+				"nombre": "1360*768"
+			  },
+			  {
+				"id": 4,
+				"nombre": "1440*900"
+			  },
+			  {
+				"id": 5,
+				"nombre": "1600*900"
+			  },
+			  {
+				"id": 6,
+				"nombre": "1680*1050"
+			  },
+			  {
+				"id": 7,
+				"nombre": "1920*1080"
+			  },
+			  {
+				"id": 7,
+				"nombre": "2560*1440"
+			  }
+			],
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "angular"
+			  },
+			  {
+				"id": 2,
+				"nombre": "react"
+			  },
+			  {
+				"id": 3,
+				"nombre": "template engine"
+			  }
+			]
+		  },
+		  {
+			"id": 2,
+			"nombre": "servicio",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "rest api"
+			  }
+			]
+		  },
+		  {
+			"id": 3,
+			"nombre": "persistencia",
+			"opciones": [
+			  {
+				"id": 1,
+				"nombre": "mssql"
+			  },
+			  {
+				"id": 2,
+				"nombre": "oracle"
+			  },
+			  {
+				"id": 3,
+				"nombre": "mariadeb"
+			  },
+			  {
+				"id": 4,
+				"nombre": "postegressql"
+			  },
+			  {
+				"id": 5,
+				"nombre": "mongoDB"
+			  }
+			]
+		  }
+		]
+	  },
+	  {
+		"id": 4,
+		"nombre": "android",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "aplicación movil nativa",
+			"tamaños_pantalla": [
+			  {
+				"id": 1,
+				"nombre": "240*320-ldpi"
+			  },
+			  {
+				"id": 2,
+				"nombre": "240*400-ldpi"
+			  },
+			  {
+				"id": 3,
+				"nombre": "240*432-ldpi"
+			  },
+			  {
+				"id": 4,
+				"nombre": "320*480-mdpi"
+			  },
+			  {
+				"id": 5,
+				"nombre": "480*800-mdpi"
+			  },
+			  {
+				"id": 6,
+				"nombre": "480*854-mdpi"
+			  },
+			  {
+				"id": 7,
+				"nombre": "1024*600-mdpi"
+			  },
+			  {
+				"id": 7,
+				"nombre": "1280*800-mdpi"
+			  },
+			  {
+				"id": 8,
+				"nombre": "480*800-hdpi"
+			  },
+			  {
+				"id": 9,
+				"nombre": "480*854-hdpi"
+			  },
+			  {
+				"id": 10,
+				"nombre": "280*280-hdpi"
+			  },
+			  {
+				"id": 11,
+				"nombre": "320*320-hdpi"
+			  },
+			  {
+				"id": 11,
+				"nombre": "720*1280-xhdpi"
+			  },
+			  {
+				"id": 12,
+				"nombre": "1200*1290-xhdpi"
+			  },
+			  {
+				"id": 13,
+				"nombre": "2560*1600-xhdpi"
+			  },
+			  {
+				"id": 14,
+				"nombre": "768*1280-xhdpi"
+			  },
+			  {
+				"id": 15,
+				"nombre": "1080*1920-xxhdpi"
+			  },
+			  {
+				"id": 16,
+				"nombre": "1080*1920-xxhdpi"
+			  },
+			  {
+				"id": 17,
+				"nombre": "800*1280-tvdpi"
+			  }
+			]
+		  }
+		]
+	  },
+	  {
+		"id": 5,
+		"nombre": "ios",
+		"tipos_de_salida": [
+		  {
+			"id": 1,
+			"nombre": "aplicación movil nativa",
+			"tamaños_pantalla": [
+			  {
+				"id": 1,
+				"nombre": "828*1792-2x-iPhone XR"
+			  },
+			  {
+				"id": 2,
+				"nombre": "1125*2436-3x-iPhone XS"
+			  },
+			  {
+				"id": 3,
+				"nombre": "1242*2688-3x-iPhone XS Max"
+			  },
+			  {
+				"id": 4,
+				"nombre": "1125*2436-3x-iPhone X"
+			  },
+			  {
+				"id": 5,
+				"nombre": "1080*1920-2.6x-iPhone 8 Plus"
+			  },
+			  {
+				"id": 6,
+				"nombre": "750*1334-2x-iPhone 8"
+			  },
+			  {
+				"id": 7,
+				"nombre": "1080*1920-2.6x-iPhone 7 Plus"
+			  },
+			  {
+				"id": 7,
+				"nombre": "750*1334-2x-iPhone 7"
+			  },
+			  {
+				"id": 8,
+				"nombre": "1080*1920-2.6x-iPhone 6 Plus/6S Plus"
+			  },
+			  {
+				"id": 9,
+				"nombre": "750*1334-2x-iPhone 6/6S"
+			  },
+			  {
+				"id": 10,
+				"nombre": "640*1136-2x-iPhone 5"
+			  },
+			  {
+				"id": 10,
+				"nombre": "640*1136-2x-iPhone 5"
+			  },
+			  {
+				"id": 11,
+				"nombre": "640*1136-2x-iPod Touch"
+			  },
+			  {
+				"id": 12,
+				"nombre": "2048*2732-2x-iPad Pro"
+			  },
+			  {
+				"id": 13,
+				"nombre": "1536 x 2048-2x-iPad Third & Fourth Generation"
+			  },
+			  {
+				"id": 14,
+				"nombre": "1536*2048-2x-iPad Air 1 & 2"
+			  },
+			  {
+				"id": 15,
+				"nombre": "1536*2048-2x-iPad Mini 2 & 3"
+			  },
+			  {
+				"id": 16,
+				"nombre": "768*1024-iPad Mini"
+			  }
+			]
+		  }
+		]
+	  }
+	]
+  }
 
 
 /*

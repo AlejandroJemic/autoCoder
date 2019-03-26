@@ -46,17 +46,18 @@ function setSalidas(select,obj){
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tipos_de_salida")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].tipos_de_salida, "salida", setOpciones);
     }
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tamaños_pantalla")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].tamaños_pantalla, "tamaños", setTamaño);
-    }
 }
 
 function setOpciones(select,obj){
     console.log("salida changed");
     var div = $(select).closest(".controldiv");
     $("#opciones").remove();
+    $("#tamaños").remove();
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
+    }
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tamaños_pantalla")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].tamaños_pantalla, "tamaños", setTamaño);
     }
 }
 
