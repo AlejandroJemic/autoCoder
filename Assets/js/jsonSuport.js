@@ -54,7 +54,10 @@ var jsonSuport = {
         if(obj.length == 1){
             if(this.HasProprty(obj[0],"tamaños_pantalla")){
                 this.CreateSelectForList(ParentElementHeader,obj[0].tamaños_pantalla, "tamaños", setTamaño);
-            }
+			}
+			if(this.HasProprty(obj[0],"orientacion")){
+				jsonSuport.CreateSelectForList(ParentElementHeader,obj[0].orientacion, "orientacion");
+			}
         }
 	},
 	PopulateSelectFromList: function(select,obj,text){

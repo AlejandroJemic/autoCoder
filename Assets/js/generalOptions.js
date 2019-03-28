@@ -231,6 +231,20 @@ var generalOptions={
 		  {
 			"id": 1,
 			"nombre": "aplicación movil nativa",
+			"orientacion":[
+				{
+					"id": 1,
+					"nombre": "horizontal"
+				},
+				{
+					"id": 2,
+					"nombre": "vertical"
+				},
+				{
+					"id": 3,
+					"nombre": "ambos"
+				}
+			],
 			"tamaños_pantalla": [
 			  {
 				"id": 1,
@@ -319,6 +333,20 @@ var generalOptions={
 		  {
 			"id": 1,
 			"nombre": "aplicación movil nativa",
+			"orientacion":[
+				{
+					"id": 1,
+					"nombre": "horizontal"
+				},
+				{
+					"id": 2,
+					"nombre": "vertical"
+				},
+				{
+					"id": 3,
+					"nombre": "ambos"
+				}
+			],
 			"tamaños_pantalla": [
 			  {
 				"id": 1,

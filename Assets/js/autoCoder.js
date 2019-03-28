@@ -43,6 +43,7 @@ function setSalidas(select,obj){
     $("#salida").remove();
     $("#opciones").remove();
     $("#tamaños").remove();
+    $("#orientacion").remove();
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tipos_de_salida")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].tipos_de_salida, "salida", setOpciones);
     }
@@ -53,20 +54,32 @@ function setOpciones(select,obj){
     var div = $(select).closest(".controldiv");
     $("#opciones").remove();
     $("#tamaños").remove();
+    $("#orientacion").remove();
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
     }
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tamaños_pantalla")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].tamaños_pantalla, "tamaños", setTamaño);
     }
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"orientacion")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].orientacion, "orientacion");
+    }
 }
 
 function setTamaño(select,obj){
-    console.log("tamaño changed");
-    // var header = $(select).closest(".viewHeader");
-    // if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
-    //     jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
-    // }
+    if(select.value > 0){
+        console.log("tamaño changed");
+        CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
+        var mainContainer    = $($(".MainElement")[CurrentTab]);
+        var inputAlto = $(mainContainer).find("#alto");
+        var inputAncho = $(mainContainer).find("#ancho");
+        var ancho =  select.options[select.selectedIndex].text.split("-")[0].split("*")[0];
+        var alto =   select.options[select.selectedIndex].text.split("-")[0].split("*")[1];
+        inputAlto.value = alto;
+        inputAncho.value = ancho;
+        setAncho(inputAncho);
+        setAlto(inputAlto);
+    }
 }
 
 function logElement(elm, index) {
