@@ -432,11 +432,6 @@ var generalOptions={
 menu general
 
 	
-	orientación
-		retrato
-		apaisado
-		ambos
-
 
 opcines de servicio
 	url
@@ -467,7 +462,7 @@ opcines de servicio
 				apikey
 				tokens
 
-		opciones de cada elemento (servicio)
+opciones de cada elemento (servicio)
 			tipoDato,select,tipos de datos
 			nonbre
 			tabla asociada
@@ -487,10 +482,7 @@ opcines de servicio
 			condicion where de borde
 
 opciones de cada elemento (pagina web)
-	tipoelemento
-		unico
-		contenedor
-		listo
+	tipoelemento, select,<tipos_elemntos>
 	id,auto,string
 	idParent,auto,string
 	nombre,input,number
@@ -509,9 +501,14 @@ opciones de cada elemento (pagina web)
 	bgColor,input,string
 	fontName,input,string
 	fontSize,input,number
-	tabla asociada
-	campo asociado
+	tabla_asociada,input,string
+	campo_asociado,input,string
 	
+	tipos_elemntos
+		unico
+		contenedor
+		lista
+
 	tipos de datos
 		integer
 		decimal
@@ -756,6 +753,45 @@ opciones de cada elemento (pagina web)
 				Switches
 				Text Fields
 
+			aspx
+				HTMLAnchor
+				HTMLButton
+				HTMLImage
+				HTMLInputbutton
+				HTMLInputCheckbox
+				HTMLInputHidden
+				HTMLInputImage
+				HTMLInputRadiobutton
+				HTMLTable
+				HTMLTextarea
+				AdRotator
+				Button
+				Calendar
+				Checkbox
+				CheckboxList
+				DataList
+				DropdownList
+				Hyperlink
+				Image
+				ImageButton
+				Label
+				LinkButton
+				Listbox
+				Literal
+				Panel
+				Radiobutton
+				RadiobuttonList
+				Repeater
+				Table
+				Textbox
+				XML
+				CompareValidator
+				CustomValidator
+				RangeValidator
+				RegularExpressionValidator
+				RequiredFieldValidator
+				Validationsummary
+
 	alineaciones
 		izquierda
 		derecha
@@ -766,5 +802,8 @@ opciones de cada elemento (pagina web)
 		arriba
 		centro
 		abajo
+
+
+		
 	
 */
