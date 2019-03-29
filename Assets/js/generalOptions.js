@@ -462,7 +462,7 @@ opcines de servicio
 				apikey
 				tokens
 
-opciones de cada elemento (servicio)
+		opciones de cada elemento (servicio)
 			tipoDato,select,tipos de datos
 			nonbre
 			tabla asociada

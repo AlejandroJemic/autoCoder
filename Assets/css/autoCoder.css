@@ -4,13 +4,12 @@
 .controldiv{
     width: 92%; margin-left: 20px;
 }
-
+.maindiv{ 
+    width: 2000px; height: 2000px; margin: 0px !important;
+}
 .viewContainer{
     display: inline-block; border: solid 2px black; padding: 5px; background-color: whitesmoke;
     position: relative;
-}
-.maindiv{ 
-    width: 2000px; height: 2000px; margin: 0px !important;
 }
 .viewHeader{
     border: solid 1px lightslategrey; background-color:rgba(0,0,0,0.8);
@@ -24,7 +23,6 @@
     border: solid 1px lightslategrey; text-align: center; height: 100%;
     cursor:pointer;
 } 
-
 
 .openHeaderBtn{
     font-size: 30px !important; cursor:pointer; padding: 0; margin: 10px; color: red; 

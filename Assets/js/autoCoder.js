@@ -31,12 +31,6 @@ function set() {
     //logElement($(mainContainer), CurrentTab);
 }
 
-$(function () {
-    $(this).on('click', function () {
-        //$(this).children(".viewContent").hide();
-    });
-});
-
 function setSalidas(select,obj){
     console.log("plataforma changed");
     var div = $(select).closest(".controldiv");
