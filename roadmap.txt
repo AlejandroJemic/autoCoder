@@ -5,4 +5,4 @@ MODELADOR
     agregar cargar proyecto desde json
 
 GENERADOR
-    exponer estructura de bbdd desde servicio
+    DONE exponer estructura de bbdd desde servicio 
