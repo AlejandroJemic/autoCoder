@@ -503,6 +503,7 @@ opciones de cada elemento (pagina web)
 	fontSize,input,number
 	tabla_asociada,input,string
 	campo_asociado,input,string
+	Where,input,string formato sql
 	
 	tipos_elemntos
 		unico
