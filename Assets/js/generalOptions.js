@@ -501,8 +501,9 @@ opciones de cada elemento (pagina web)
 	bgColor,input,string
 	fontName,input,string
 	fontSize,input,number
-	tabla_asociada,input,string
-	campo_asociado,input,string
+	bbdd_tabla_asociada,input,string
+	bbdd_campo_asociado,input,string
+	Where,input,string formato sql
 	
 	tipos_elemntos
 		unico

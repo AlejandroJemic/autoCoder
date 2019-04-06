@@ -1,0 +1,66 @@
+{
+    "project_Name": "proyecto1",
+    "version": 1,
+    "bbdd": {
+      "datasource": "sdatasourse",
+      "username": "user",
+      "password": "pasword",
+      "catalog": "catalog"
+    },
+    "outputs": [
+      {
+        "numero": 1,
+        "nombre": "nombre vista 1",
+        "tipo": "vista o servicio",
+        "plataforma_de_salida": {
+          "id": 1,
+          "nombre": ".net",
+          "tipo_de_salida": {
+            "id": 1,
+            "nombre": "pagina web",
+            "tamaño_pantalla": {
+              "alto": 100,
+              "ancho": 50
+            },
+            "opcion": {
+              "id": 1,
+              "nombre": "aspx"
+            }
+          }
+        },
+        "elementos": [
+          {
+            "nombre": "nombre elemento",
+            "tipoelemento": "select,<tipos_elemntos>",
+            "id": "asg-123-asd",
+            "idParent": "asa-123-asd",
+            "alto": 20,
+            "ancho": 200,
+            "xpos": 10,
+            "ypos": 10,
+            "tipoControl": "select,tipos de controles por plataforma,<selectedPlataform>",
+            "tipoDato": "select,tipos de datos",
+            "margin": 0,
+            "pading": 0,
+            "color": "#225544",
+            "align": "select,alineaciones",
+            "verticalalingn": "select, alineacione verticales",
+            "cssClass": "clase1",
+            "bgColor": "#665544",
+            "fontName": "arial",
+            "fontSize": 24,
+            "bbdd_tabla_asociada": "tabla 1",
+            "bbdd_campo_asociado": "campo 1",
+            "Where": "tipo dato = 1",
+            "sub_elementos": [
+              {},
+              {},
+              {}
+            ]
+          },
+          {},
+          {}
+        ]
+      }
+    ]
+  }
