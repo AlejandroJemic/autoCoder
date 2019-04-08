@@ -5,7 +5,8 @@
       "datasource": "sdatasourse",
       "username": "user",
       "password": "pasword",
-      "catalog": "catalog"
+      "catalog": "catalog",
+      "engine": "MSSQL"
     },
     "outputs": [
       {

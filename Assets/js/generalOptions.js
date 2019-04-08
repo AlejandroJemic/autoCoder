@@ -479,6 +479,36 @@ var generalOptions={
 		{
 			"type": "text",
 			"options": "string",
+			"nombre": "style"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "onClick"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "onChanged"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "onKeyPress"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "onFocus"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "onBlur"
+		},
+		{
+			"type": "text",
+			"options": "string",
 			"nombre": "fontName"
 		},
 		{

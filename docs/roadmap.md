@@ -1,5 +1,5 @@
 ## MODELADOR
-* [x]  agregar contexto tab local o elemento local a las busquedas de elementos
+* [x] agregar contexto tab local o elemento local a las busquedas de elementos
 * [x] agregar parametros coneccion ddbb en menu general
 * [x] definir estructura json proyecto (vista)
 * [ ] agregar opciones de cada elmento
@@ -26,6 +26,13 @@
 * [ ] enviar json(proyecto vistas) a servicio generador
 
 ### * [ ] HITO V 2.0
+
+* [ ] eventos por plataforma
+* [ ] preview elementos dinamica 
+  * [ ] leer palntilla de bbdd
+  * [ ] completar campos en platilla con valores del elemento
+  * [ ] renderizar en pantalla con estilos del coder
+
 
 ## GENERADOR
 * [x] exponer estructura de bbdd desde servicio
@@ -63,4 +70,7 @@
 * [ ] envia Codigo como archivo zip al modelador (descarga web)
 
 ### * [ ] HITO V 2.0
+
+* [ ] fork de bootstrap con clases que ereden todas del espacio de nombres CODER ( o le que sea)
+* [ ] pasear todas las clases css y dejarlas en un metodo api para lererlas desde el modelador
 
