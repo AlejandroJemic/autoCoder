@@ -425,7 +425,177 @@ var generalOptions={
 		]
 	  }
 	],
-	"opciones_elemnto_vista":[]
+	"opciones_elemento_vista":[
+		{
+			"nombre": "tipoElemento",
+			"type": "select",
+			"options": "tipos_elemntos"
+		},
+		{
+			"type": "select",
+			"options": "tipos_controles selectedPlataform",
+			"nombre": "tipoControl"
+		},
+		{
+			"type": "select",
+			"options": "tipos_datos",
+			"nombre": "tipoDato"
+		},
+		{
+			"type": "text",
+			"options": "number",
+			"nombre": "xpos"
+		},
+		{
+			"type": "text",
+			"options": "number",
+			"nombre": "ypos"
+		},
+		{
+			"type": "text",
+			"options": "number",
+			"nombre": "margin"
+		},
+		{
+			"type": "text",
+			"options": "number",
+			"nombre": "padding"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "color"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "backgroundColor"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "cssClass"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "fontName"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "bbdd_tabla_asociada"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "bbdd_campo_asociado"
+		},
+		{
+			"type": "text",
+			"options": "string",
+			"nombre": "bbdd_Where"
+		},
+		{
+			"type": "text",
+			"options": "number",
+			"nombre": "fontSize"
+		},
+		{
+			"type": "select",
+			"options": "alineaciones_horizontales",
+			"nombre": "align"
+		},
+		{
+			"type": "select",
+			"options": "alineaciones_verticales",
+			"nombre": "verticalAlign"
+		}
+	],
+	"tipos_elemntos": [
+    {
+      "id": 1,
+      "nombre": "unico"
+    },
+    {
+      "id": 2,
+      "nombre": "contenedor"
+    },
+    {
+      "id": 3,
+      "nombre": "lista"
+    }
+	],
+	"tipos_datos": [
+    {
+      "id": 1,
+      "nombre": "integer"
+    },
+    {
+      "id": 2,
+      "nombre": "decimal"
+    },
+    {
+      "id": 3,
+      "nombre": "string"
+    },
+    {
+      "id": 4,
+      "nombre": "date"
+    },
+    {
+      "id": 5,
+      "nombre": "time"
+    },
+    {
+      "id": 6,
+      "nombre": "datetime"
+    },
+    {
+      "id": 7,
+      "nombre": "boolean"
+    },
+    {
+      "id": 8,
+      "nombre": "list"
+    },
+    {
+      "id": 9,
+      "nombre": "object"
+    }
+  ],
+  "alineaciones_horizontales": [
+    {
+      "id": 1,
+      "nombre": "izquierda"
+    },
+    {
+      "id": 2,
+      "nombre": "derecha"
+    },
+    {
+      "id": 3,
+      "nombre": "centrado"
+    },
+    {
+      "id": 4,
+      "nombre": "justificado"
+    }
+  ],
+  "alineaciones_verticales": [
+    {
+      "id": 1,
+      "nombre": "arriba"
+    },
+    {
+      "id": 2,
+      "nombre": "centro"
+    },
+    {
+      "id": 3,
+      "nombre": "abajo"
+    }
+  ]
   }
 
 
@@ -481,47 +651,7 @@ opcines de servicio
 			tabla asociada
 			campo asociado
 			condicion where de borde
-
-opciones de cada elemento (pagina web)
-	tipoelemento, select,<tipos_elemntos>
-	id,auto,string
-	idParent,auto,string
-	nombre,input,number
-	alto,input,number
-	ancho,input,number
-	xpos,input,number
-	ypos,input,number
-	tipoControl,select,tipos de controles por plataforma,<selectedPlataform>
-	tipoDato,select,tipos de datos
-	margin,input,number
-	pading,input,number 
-	color,inpput,string
-	align,select,alineaciones
-	vertical-align,select, alineacione verticales
-	cssClass,input,string
-	bgColor,input,string
-	fontName,input,string
-	fontSize,input,number
-	bbdd_tabla_asociada,input,string
-	bbdd_campo_asociado,input,string
-	Where,input,string formato sql
 	
-	tipos_elemntos
-		unico
-		contenedor
-		lista
-
-	tipos de datos
-		integer
-		decimal
-		string
-		date
-		time
-		datetime
-		boolean
-		list
-		object
-		
 	tipos de controles por plataforma
 		
 		web	
@@ -793,19 +923,4 @@ opciones de cada elemento (pagina web)
 				RegularExpressionValidator
 				RequiredFieldValidator
 				Validationsummary
-
-	alineaciones
-		izquierda
-		derecha
-		centrado
-		justificado
-	
-	alineaciones verticales
-		arriba
-		centro
-		abajo
-
-
-		
-	
 */
