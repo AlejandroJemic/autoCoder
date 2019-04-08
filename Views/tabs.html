@@ -27,15 +27,19 @@
 </head>
 
 <body class='default'>
-    <span class="openMenuBtn" onclick="openNav()">&#9776;</span>   
+    <span class="openMenuBtn" onclick="openNav()">&#9776;</span>
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <div class='d-inline-flex card-header'>
+                <input id='datasource' type='text' value='' class='form-control' name='datasource' placeholder='datasource' />
+                <input id='username' type='text' value='' class='form-control' name='username' placeholder='username' />
+                <input id='password' type='text' value='' class='form-control' name='password' placeholder='password' />
+                <input id='catalog' type='text' value='' class='form-control' name='catalog' placeholder='catalog' />
+            </div>
         </div>
+
+    </div>
     </div>
     <div id='jqxWidget'>
         <div id='jqxTabs' style="float: left;">

@@ -1,8 +1,17 @@
 var CurrentTab = 0;
+var mainContainer;
+
+function getContext(){
+    CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
+    mainContainer = $($(".MainElement")[CurrentTab]);
+}
+function $tab (selector){
+    getContext();
+    return $($(selector,mainContainer));
+}
 
 function set() {
-    CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
-    var mainContainer    = $($(".MainElement")[CurrentTab]);
+    getContext();
     var sid = setid(mainContainer);
     var inputAlto = $(mainContainer).find("#alto");
     var inputAncho = $(mainContainer).find("#ancho");
@@ -33,11 +42,11 @@ function set() {
 
 function setSalidas(select,obj){
     console.log("plataforma changed");
-    var div = $(select).closest(".controldiv");
-    $("#salida").remove();
-    $("#opciones").remove();
-    $("#tamaños").remove();
-    $("#orientacion").remove();
+    var div = $tab(select).closest(".controldiv");
+    $tab("#salida").remove();
+    $tab("#opciones").remove();
+    $tab("#tamaños").remove();
+    $tab("#orientacion").remove();
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tipos_de_salida")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].tipos_de_salida, "salida", setOpciones);
     }
@@ -45,10 +54,10 @@ function setSalidas(select,obj){
 
 function setOpciones(select,obj){
     console.log("salida changed");
-    var div = $(select).closest(".controldiv");
-    $("#opciones").remove();
-    $("#tamaños").remove();
-    $("#orientacion").remove();
+    var div = $tab(select).closest(".controldiv");
+    $tab("#opciones").remove();
+    $tab("#tamaños").remove();
+    $tab("#orientacion").remove();
     if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
         jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
     }
@@ -63,14 +72,14 @@ function setOpciones(select,obj){
 function setTamaño(select,obj){
     if(select.value > 0){
         console.log("tamaño changed");
-        CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
-        var mainContainer    = $($(".MainElement")[CurrentTab]);
-        var inputAlto = $(mainContainer).find("#alto");
-        var inputAncho = $(mainContainer).find("#ancho");
+        getContext();
         var ancho =  select.options[select.selectedIndex].text.split("-")[0].split("*")[0];
         var alto =   select.options[select.selectedIndex].text.split("-")[0].split("*")[1];
+        var inputAlto = $tab("#alto").val(alto);
+        var inputAncho = $tab("#ancho").val(ancho);
         inputAlto.value = alto;
         inputAncho.value = ancho;
+
         setAncho(inputAncho);
         setAlto(inputAlto);
     }
@@ -170,6 +179,7 @@ function AddElemnt(btn) {
     $newElement.children(".viewContent").height(80);
     //$newElement.children(".viewHeader").width(250);
     $newElement.children(".viewHeader").hide();
+    $newElement.attr("idParent", $(element).prop("id"));
 
     setid($newElement);
 

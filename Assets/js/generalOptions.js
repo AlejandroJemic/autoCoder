@@ -424,7 +424,8 @@ var generalOptions={
 		  }
 		]
 	  }
-	]
+	],
+	"opciones_elemnto_vista":[]
   }
 
 
