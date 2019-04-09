@@ -2,7 +2,7 @@
 * [x] agregar contexto tab local o elemento local a las busquedas de elementos
 * [x] agregar parametros coneccion ddbb en menu general
 * [x] definir estructura json proyecto (vista)
-* [ ] agregar opciones de cada elmento
+* [ ] agregar opciones de cada elemento
 * [ ] agregar guardar proyecto como json (vista)
   * [ ] leer setings de cada tab
   * [ ] leer elemntos de cada tab(recursivo)
@@ -32,6 +32,8 @@
   * [ ] leer palntilla de bbdd
   * [ ] completar campos en platilla con valores del elemento
   * [ ] renderizar en pantalla con estilos del coder
+* [ ] listar clases css disponibles
+* [ ] ver preview de un elemento con las clases ya aplicadas
 
 
 ## GENERADOR
@@ -73,4 +75,5 @@
 
 * [ ] fork de bootstrap con clases que ereden todas del espacio de nombres CODER ( o le que sea)
 * [ ] pasear todas las clases css y dejarlas en un metodo api para lererlas desde el modelador
+* [ ] cervicio rest api para exponer todas las clases css disponibles
 

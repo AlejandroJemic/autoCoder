@@ -36,18 +36,66 @@ var jsonSuport = {
 		}
 		else{return false;}
 	},
-	ForEachInJson: function(obj, ExecuteFunction ){
-		Object.keys(obj).forEach(ExecuteFunction(key));
+	ForEachInJson: function(list, ExecuteFunction ){
+		for (var i = 0; i < list.length; i++) { 
+			ExecuteFunction(list[i]);
+		}
 	},
-	CreateSelectForList: function(ParentElementHeader,obj,text,onchangeFunc){
+	CreateElementsForList: function(obj){
+		var menu =  $("#mySidenavElements");
+		console.log("creating element: " +  obj.nombre + ", type: "  + obj.type)
+		if(obj.type == "select")
+		{
+			if(jsonSuport.HasProprty(generalOptions, obj.options)){
+			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.nombre,null,"col-12");
+			}
+		}
+		if(obj.type == "text")
+		{
+			jsonSuport.CreateInputText(menu,generalOptions[obj.options], obj.nombre,null,"col-12");
+		}
+	},
+	CreateInputText: function(ParentElementHeader,obj,text,onchangeFunc,col){
+		var inputText =  document.createElement("INPUT");
+		inputText.setAttribute("type", "text");
+		$(inputText).addClass("form-control text");
+		if(col != null){
+			$(inputText).addClass(col);
+		}
+		else{
+			$(inputText).addClass("col-4");
+		}
+
+		$(inputText).attr("placeholder", text);
+		$(inputText).prop("title", text);
+		$(inputText).attr("id", text);
+		$(inputText).attr("name", text);
+		if(onchangeFunc != null){
+            if(this.isFunction(onchangeFunc)){
+                $(inputText).change(function(){ onchangeFunc(inputText,obj); });
+		    }
+		}
+		$(ParentElementHeader).append(inputText);
+	},
+	CreateSelectForList: function(ParentElementHeader,obj,text,onchangeFunc,col){
 		var select = document.createElement("select");
-		$(select).addClass("form-control select col-4");
+		$(select).addClass("form-control select");
+		if(col != null){
+			$(select).addClass(col);
+		}
+		else{
+			$(select).addClass("col-4");
+		}
+		
 		$(select).attr("placeholder", text);
+		$(select).prop("title", text);
 		$(select).attr("id", text);
-        $(select).attr("name", text);
-        if(this.isFunction(onchangeFunc)){
-            $(select).change(function(){ onchangeFunc(select,obj); });
-        }
+		$(select).attr("name", text);
+		if(onchangeFunc != null){
+            if(this.isFunction(onchangeFunc)){
+                $(select).change(function(){ onchangeFunc(select,obj); });
+		    }
+	    }
 
 		this.PopulateSelectFromList(select,obj,text);
         $(ParentElementHeader).append(select);

@@ -1,5 +1,6 @@
 var CurrentTab = 0;
 var mainContainer;
+var btnEdit;
 
 function getContext(){
     CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
@@ -237,6 +238,8 @@ function newElement() {
     sElment += "		src='../assets/imgs/circle_plus.png' alt='del' style='width: 23px;' /></button>"
     sElment += "<button type='button' id='btnDel' onclick='delElemnt(this);' class='btn btn-danger float-right'><img src='../assets/imgs/circle_delete.png'"
     sElment += "	alt='add' style='width: 23px;' /></button>"
+    sElment += "<button type='button' id='btnEdit' onclick='EditElement(this);' class='btn btn-primary float-right'><img"
+    sElment += "         src='../assets/imgs/pencil.png' alt='del' style='width: 23px;' /></button>"
     sElment += "</div>"
     sElment += "</div>"
     sElment += "<div class='panel-body viewContent'></div>"
@@ -244,12 +247,26 @@ function newElement() {
 }
 
 function openNav() {
-    document.getElementById("myNav").style.height = "300px";
-  }
+    document.getElementById("myNav").style.height = "130px";
+}
 
-  function closeNav() {
+function closeNav() {
     document.getElementById("myNav").style.height = "0%";
-  }
+}
+
+function EditElement(btn) {
+    document.getElementById("mySidenav").style.width = "300px";
+    $(btn).attr("onclick", "CloseEdit(this)")
+    btnEdit = btn;
+    jsonSuport.ForEachInJson(generalOptions.opciones_elemento_vista, jsonSuport.CreateElementsForList)
+}
+  
+function CloseEdit(btn) {
+    document.getElementById("mySidenav").style.width = "0";
+    $(btn).attr("onclick", "EditElement(this)")
+    $(btnEdit).attr("onclick", "EditElement(this)")
+    $("#mySidenavElements").html("");
+}
 
 $(document).ready(function () {
 
