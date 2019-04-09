@@ -195,6 +195,7 @@ function AddElemnt(btn) {
     $newElement.children(".viewHeader").find("#Nombre").val("");
     $newElement.children(".viewHeader").find("#alto").val("150");
     $newElement.children(".viewHeader").find("#ancho").val("300");
+    closeHeader(btn);
 }
 
 function delElemnt(btn) {
@@ -258,6 +259,7 @@ function EditElement(btn) {
     document.getElementById("mySidenav").style.width = "300px";
     $(btn).attr("onclick", "CloseEdit(this)")
     btnEdit = btn;
+    $("#mySidenavElements").html("");
     jsonSuport.ForEachInJson(generalOptions.opciones_elemento_vista, jsonSuport.CreateElementsForList)
 }
   
