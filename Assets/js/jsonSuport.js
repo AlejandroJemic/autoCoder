@@ -52,10 +52,10 @@ var jsonSuport = {
 		}
 		if(obj.type == "text")
 		{
-			jsonSuport.CreateInputText(menu,generalOptions[obj.options], obj.nombre,null,"col-12");
+			jsonSuport.CreateInputText(menu,obj.options, obj.nombre,null,"col-12");
 		}
 	},
-	CreateInputText: function(ParentElementHeader,obj,text,onchangeFunc,col){
+	CreateInputText: function(ParentElementHeader,options,text,onchangeFunc,col){
 		var inputText =  document.createElement("INPUT");
 		inputText.setAttribute("type", "text");
 		$(inputText).addClass("form-control text");
@@ -65,7 +65,9 @@ var jsonSuport = {
 		else{
 			$(inputText).addClass("col-4");
 		}
-
+		if(options == "number"){
+			$(inputText).attr("onkeypress", "return EnterosPositivos(event);");
+		}
 		$(inputText).attr("placeholder", text);
 		$(inputText).prop("title", text);
 		$(inputText).attr("id", text);

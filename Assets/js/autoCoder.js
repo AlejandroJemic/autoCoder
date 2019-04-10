@@ -195,7 +195,6 @@ function AddElemnt(btn) {
     $newElement.children(".viewHeader").find("#Nombre").val("");
     $newElement.children(".viewHeader").find("#alto").val("150");
     $newElement.children(".viewHeader").find("#ancho").val("300");
-    closeHeader(btn);
 }
 
 function delElemnt(btn) {
@@ -270,6 +269,43 @@ function CloseEdit(btn) {
     $("#mySidenavElements").html("");
 }
 
+function numerico(e) {
+    var regex = new RegExp("^[0-9]+$");
+    var evt = e || window.event;
+    var charCode = evt.charCode || evt.keyCode;
+
+    var key = String.fromCharCode(charCode);
+    if (!regex.test(key)) {
+        //event.preventDefault();
+        return false;
+    }
+}
+
+function decimales(e)
+{
+    var regex = new RegExp("^[0-9,-]+$");
+    var evt = e || window.event;
+    var charCode = evt.charCode || evt.keyCode;
+
+    var key = String.fromCharCode(charCode);
+    if (!regex.test(key)) {
+        //event.preventDefault();
+        return false;
+    }
+}
+
+function EnterosPositivos(e) {
+    var regex = new RegExp("^[0-9]+$");
+    var evt = e || window.event;
+    var charCode = evt.charCode || evt.keyCode;
+
+    var key = String.fromCharCode(charCode);
+    if (!regex.test(key)) {
+        //event.preventDefault();
+        return false;
+    }
+}
+
 $(document).ready(function () {
 
     var addButton,
@@ -287,7 +323,6 @@ $(document).ready(function () {
             if (tab == 0) {
                 var pageIndex = tab + 1;
                 loadPage('viewEditor.html', pageIndex);
-
             }
         }
     });
