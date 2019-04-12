@@ -1,44 +1,44 @@
 var generalOptions={
-	"plataformas_de_salida": [
+	"outputPlataforms": [
 	  {
 		"id": 1,
-		"nombre": "html",
-		"tipos_de_salida": [
+		"name": "html",
+		"outputTypes": [
 		  {
 			"id": 1,
-			"nombre": "pagina web",
-			"tamaños_pantalla": [
+			"name": "pagina web",
+			"screenSizes": [
 			  {
 				"id": 1,
-				"nombre": "1024*768"
+				"name": "1024*768"
 			  },
 			  {
 				"id": 2,
-				"nombre": "1280*800"
+				"name": "1280*800"
 			  },
 			  {
 				"id": 3,
-				"nombre": "1360*768"
+				"name": "1360*768"
 			  },
 			  {
 				"id": 4,
-				"nombre": "1440*900"
+				"name": "1440*900"
 			  },
 			  {
 				"id": 5,
-				"nombre": "1600*900"
+				"name": "1600*900"
 			  },
 			  {
 				"id": 6,
-				"nombre": "1680*1050"
+				"name": "1680*1050"
 			  },
 			  {
 				"id": 7,
-				"nombre": "1920*1080"
+				"name": "1920*1080"
 			  },
 			  {
 				"id": 7,
-				"nombre": "2560*1440"
+				"name": "2560*1440"
 			  }
 			]
 		  }
@@ -46,85 +46,85 @@ var generalOptions={
 	  },
 	  {
 		"id": 2,
-		"nombre": ".net",
-		"tipos_de_salida": [
+		"name": ".net",
+		"outputTypes": [
 		  {
 			"id": 1,
-			"nombre": "pagina web",
-			"tamaños_pantalla": [
+			"name": "pagina web",
+			"screenSizes": [
 			  {
 				"id": 1,
-				"nombre": "1024*768"
+				"name": "1024*768"
 			  },
 			  {
 				"id": 2,
-				"nombre": "1280*800"
+				"name": "1280*800"
 			  },
 			  {
 				"id": 3,
-				"nombre": "1360*768"
+				"name": "1360*768"
 			  },
 			  {
 				"id": 4,
-				"nombre": "1440*900"
+				"name": "1440*900"
 			  },
 			  {
 				"id": 5,
-				"nombre": "1600*900"
+				"name": "1600*900"
 			  },
 			  {
 				"id": 6,
-				"nombre": "1680*1050"
+				"name": "1680*1050"
 			  },
 			  {
 				"id": 7,
-				"nombre": "1920*1080"
+				"name": "1920*1080"
 			  },
 			  {
 				"id": 7,
-				"nombre": "2560*1440"
+				"name": "2560*1440"
 			  }
 			],
-			"opciones": [
+			"options": [
 			  {
 				"id": 1,
-				"nombre": "aspx"
+				"name": "aspx"
 			  },
 			  {
 				"id": 2,
-				"nombre": "mvc"
+				"name": "mvc"
 			  }
 			]
 		  },
 		  {
 			"id": 2,
-			"nombre": "servicio",
-			"opciones": [
+			"name": "servicio",
+			"options": [
 			  {
 				"id": 1,
-				"nombre": "web api rest"
+				"name": "web api rest"
 			  },
 			  {
 				"id": 2,
-				"nombre": "wcf soap"
+				"name": "wcf soap"
 			  }
 			]
 		  },
 		  {
 			"id": 3,
-			"nombre": "persistencia",
-			"opciones": [
+			"name": "persistencia",
+			"options": [
 			  {
 				"id": 1,
-				"nombre": "entity Framework"
+				"name": "entity Framework"
 			  },
 			  {
 				"id": 2,
-				"nombre": "ADO.net"
+				"name": "ADO.net"
 			  },
 			  {
 				"id": 3,
-				"nombre": "api Consumer JSON"
+				"name": "api Consumer JSON"
 			  }
 			]
 		  }
@@ -132,93 +132,93 @@ var generalOptions={
 	  },
 	  {
 		"id": 3,
-		"nombre": "nodejs",
-		"tipos_de_salida": [
+		"name": "nodejs",
+		"outputTypes": [
 		  {
 			"id": 1,
-			"nombre": "pagina web",
-			"tamaños_pantalla": [
+			"name": "pagina web",
+			"screenSizes": [
 			  {
 				"id": 1,
-				"nombre": "1024*768"
+				"name": "1024*768"
 			  },
 			  {
 				"id": 2,
-				"nombre": "1280*800"
+				"name": "1280*800"
 			  },
 			  {
 				"id": 3,
-				"nombre": "1360*768"
+				"name": "1360*768"
 			  },
 			  {
 				"id": 4,
-				"nombre": "1440*900"
+				"name": "1440*900"
 			  },
 			  {
 				"id": 5,
-				"nombre": "1600*900"
+				"name": "1600*900"
 			  },
 			  {
 				"id": 6,
-				"nombre": "1680*1050"
+				"name": "1680*1050"
 			  },
 			  {
 				"id": 7,
-				"nombre": "1920*1080"
+				"name": "1920*1080"
 			  },
 			  {
 				"id": 7,
-				"nombre": "2560*1440"
+				"name": "2560*1440"
 			  }
 			],
-			"opciones": [
+			"options": [
 			  {
 				"id": 1,
-				"nombre": "angular"
+				"name": "angular"
 			  },
 			  {
 				"id": 2,
-				"nombre": "react"
+				"name": "react"
 			  },
 			  {
 				"id": 3,
-				"nombre": "template engine"
+				"name": "template engine"
 			  }
 			]
 		  },
 		  {
 			"id": 2,
-			"nombre": "servicio",
-			"opciones": [
+			"name": "servicio",
+			"options": [
 			  {
 				"id": 1,
-				"nombre": "rest api"
+				"name": "rest api"
 			  }
 			]
 		  },
 		  {
 			"id": 3,
-			"nombre": "persistencia",
-			"opciones": [
+			"name": "persistencia",
+			"options": [
 			  {
 				"id": 1,
-				"nombre": "mssql"
+				"name": "mssql"
 			  },
 			  {
 				"id": 2,
-				"nombre": "oracle"
+				"name": "oracle"
 			  },
 			  {
 				"id": 3,
-				"nombre": "mariadeb"
+				"name": "mariadeb"
 			  },
 			  {
 				"id": 4,
-				"nombre": "postegressql"
+				"name": "postegressql"
 			  },
 			  {
 				"id": 5,
-				"nombre": "mongoDB"
+				"name": "mongoDB"
 			  }
 			]
 		  }
@@ -226,101 +226,101 @@ var generalOptions={
 	  },
 	  {
 		"id": 4,
-		"nombre": "android",
-		"tipos_de_salida": [
+		"name": "android",
+		"outputTypes": [
 		  {
 			"id": 1,
-			"nombre": "aplicación movil nativa",
+			"name": "aplicación movil nativa",
 			"orientacion":[
 				{
 					"id": 1,
-					"nombre": "horizontal"
+					"name": "horizontal"
 				},
 				{
 					"id": 2,
-					"nombre": "vertical"
+					"name": "vertical"
 				},
 				{
 					"id": 3,
-					"nombre": "ambos"
+					"name": "ambos"
 				}
 			],
-			"tamaños_pantalla": [
+			"screenSizes": [
 			  {
 				"id": 1,
-				"nombre": "240*320-ldpi"
+				"name": "240*320-ldpi"
 			  },
 			  {
 				"id": 2,
-				"nombre": "240*400-ldpi"
+				"name": "240*400-ldpi"
 			  },
 			  {
 				"id": 3,
-				"nombre": "240*432-ldpi"
+				"name": "240*432-ldpi"
 			  },
 			  {
 				"id": 4,
-				"nombre": "320*480-mdpi"
+				"name": "320*480-mdpi"
 			  },
 			  {
 				"id": 5,
-				"nombre": "480*800-mdpi"
+				"name": "480*800-mdpi"
 			  },
 			  {
 				"id": 6,
-				"nombre": "480*854-mdpi"
+				"name": "480*854-mdpi"
 			  },
 			  {
 				"id": 7,
-				"nombre": "1024*600-mdpi"
+				"name": "1024*600-mdpi"
 			  },
 			  {
 				"id": 7,
-				"nombre": "1280*800-mdpi"
+				"name": "1280*800-mdpi"
 			  },
 			  {
 				"id": 8,
-				"nombre": "480*800-hdpi"
+				"name": "480*800-hdpi"
 			  },
 			  {
 				"id": 9,
-				"nombre": "480*854-hdpi"
+				"name": "480*854-hdpi"
 			  },
 			  {
 				"id": 10,
-				"nombre": "280*280-hdpi"
+				"name": "280*280-hdpi"
 			  },
 			  {
 				"id": 11,
-				"nombre": "320*320-hdpi"
+				"name": "320*320-hdpi"
 			  },
 			  {
 				"id": 11,
-				"nombre": "720*1280-xhdpi"
+				"name": "720*1280-xhdpi"
 			  },
 			  {
 				"id": 12,
-				"nombre": "1200*1290-xhdpi"
+				"name": "1200*1290-xhdpi"
 			  },
 			  {
 				"id": 13,
-				"nombre": "2560*1600-xhdpi"
+				"name": "2560*1600-xhdpi"
 			  },
 			  {
 				"id": 14,
-				"nombre": "768*1280-xhdpi"
+				"name": "768*1280-xhdpi"
 			  },
 			  {
 				"id": 15,
-				"nombre": "1080*1920-xxhdpi"
+				"name": "1080*1920-xxhdpi"
 			  },
 			  {
 				"id": 16,
-				"nombre": "1080*1920-xxhdpi"
+				"name": "1080*1920-xxhdpi"
 			  },
 			  {
 				"id": 17,
-				"nombre": "800*1280-tvdpi"
+				"name": "800*1280-tvdpi"
 			  }
 			]
 		  }
@@ -328,305 +328,305 @@ var generalOptions={
 	  },
 	  {
 		"id": 5,
-		"nombre": "ios",
-		"tipos_de_salida": [
+		"name": "ios",
+		"outputTypes": [
 		  {
 			"id": 1,
-			"nombre": "aplicación movil nativa",
-			"orientacion":[
+			"name": "aplicación movil nativa",
+			"orientation":[
 				{
 					"id": 1,
-					"nombre": "horizontal"
+					"name": "horizontal"
 				},
 				{
 					"id": 2,
-					"nombre": "vertical"
+					"name": "vertical"
 				},
 				{
 					"id": 3,
-					"nombre": "ambos"
+					"name": "ambos"
 				}
 			],
-			"tamaños_pantalla": [
+			"screenSizes": [
 			  {
 				"id": 1,
-				"nombre": "828*1792-2x-iPhone XR"
+				"name": "828*1792-2x-iPhone XR"
 			  },
 			  {
 				"id": 2,
-				"nombre": "1125*2436-3x-iPhone XS"
+				"name": "1125*2436-3x-iPhone XS"
 			  },
 			  {
 				"id": 3,
-				"nombre": "1242*2688-3x-iPhone XS Max"
+				"name": "1242*2688-3x-iPhone XS Max"
 			  },
 			  {
 				"id": 4,
-				"nombre": "1125*2436-3x-iPhone X"
+				"name": "1125*2436-3x-iPhone X"
 			  },
 			  {
 				"id": 5,
-				"nombre": "1080*1920-2.6x-iPhone 8 Plus"
+				"name": "1080*1920-2.6x-iPhone 8 Plus"
 			  },
 			  {
 				"id": 6,
-				"nombre": "750*1334-2x-iPhone 8"
+				"name": "750*1334-2x-iPhone 8"
 			  },
 			  {
 				"id": 7,
-				"nombre": "1080*1920-2.6x-iPhone 7 Plus"
+				"name": "1080*1920-2.6x-iPhone 7 Plus"
 			  },
 			  {
 				"id": 7,
-				"nombre": "750*1334-2x-iPhone 7"
+				"name": "750*1334-2x-iPhone 7"
 			  },
 			  {
 				"id": 8,
-				"nombre": "1080*1920-2.6x-iPhone 6 Plus/6S Plus"
+				"name": "1080*1920-2.6x-iPhone 6 Plus/6S Plus"
 			  },
 			  {
 				"id": 9,
-				"nombre": "750*1334-2x-iPhone 6/6S"
+				"name": "750*1334-2x-iPhone 6/6S"
 			  },
 			  {
 				"id": 10,
-				"nombre": "640*1136-2x-iPhone 5"
+				"name": "640*1136-2x-iPhone 5"
 			  },
 			  {
 				"id": 10,
-				"nombre": "640*1136-2x-iPhone 5"
+				"name": "640*1136-2x-iPhone 5"
 			  },
 			  {
 				"id": 11,
-				"nombre": "640*1136-2x-iPod Touch"
+				"name": "640*1136-2x-iPod Touch"
 			  },
 			  {
 				"id": 12,
-				"nombre": "2048*2732-2x-iPad Pro"
+				"name": "2048*2732-2x-iPad Pro"
 			  },
 			  {
 				"id": 13,
-				"nombre": "1536 x 2048-2x-iPad Third & Fourth Generation"
+				"name": "1536 x 2048-2x-iPad Third & Fourth Generation"
 			  },
 			  {
 				"id": 14,
-				"nombre": "1536*2048-2x-iPad Air 1 & 2"
+				"name": "1536*2048-2x-iPad Air 1 & 2"
 			  },
 			  {
 				"id": 15,
-				"nombre": "1536*2048-2x-iPad Mini 2 & 3"
+				"name": "1536*2048-2x-iPad Mini 2 & 3"
 			  },
 			  {
 				"id": 16,
-				"nombre": "768*1024-iPad Mini"
+				"name": "768*1024-iPad Mini"
 			  }
 			]
 		  }
 		]
 	  }
 	],
-	"opciones_elemento_vista":[
+	"viewElementOptions":[
 		{
-			"nombre": "tipoElemento",
+			"name": "elementType",
 			"type": "select",
-			"options": "tipos_elemntos"
+			"options": "elementTypes"
 		},
 		{
 			"type": "select",
-			"options": "tipos_controles selectedPlataform",
-			"nombre": "tipoControl"
+			"options": "selectedPlataformControls",
+			"name": "controlType"
 		},
 		{
 			"type": "select",
-			"options": "tipos_datos",
-			"nombre": "tipoDato"
+			"options": "dataTypes",
+			"name": "dataType"
 		},
 		{
 			"type": "text",
 			"options": "number",
-			"nombre": "xpos"
+			"name": "xpos"
 		},
 		{
 			"type": "text",
 			"options": "number",
-			"nombre": "ypos"
+			"name": "ypos"
 		},
 		{
 			"type": "text",
 			"options": "number",
-			"nombre": "margin"
+			"name": "margin"
 		},
 		{
 			"type": "text",
 			"options": "number",
-			"nombre": "padding"
+			"name": "padding"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "color"
+			"name": "color"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "backgroundColor"
+			"name": "backgroundColor"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "cssClass"
+			"name": "cssClass"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "style"
+			"name": "style"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "onClick"
+			"name": "onClick"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "onChanged"
+			"name": "onChanged"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "onKeyPress"
+			"name": "onKeyPress"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "onFocus"
+			"name": "onFocus"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "onBlur"
+			"name": "onBlur"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "fontName"
+			"name": "fontName"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "bbdd_tabla_asociada"
+			"name": "asossiatedTable"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "bbdd_campo_asociado"
+			"name": "associatedField"
 		},
 		{
 			"type": "text",
 			"options": "string",
-			"nombre": "bbdd_Where"
+			"name": "whereFilter"
 		},
 		{
 			"type": "text",
 			"options": "number",
-			"nombre": "fontSize"
+			"name": "fontSize"
 		},
 		{
 			"type": "select",
-			"options": "alineaciones_horizontales",
-			"nombre": "align"
+			"options": "alignments",
+			"name": "align"
 		},
 		{
 			"type": "select",
-			"options": "alineaciones_verticales",
-			"nombre": "verticalAlign"
+			"options": "verticalAlignments",
+			"name": "verticalAlign"
 		}
 	],
-	"tipos_elemntos": [
+	"elementTypes": [
     {
       "id": 1,
-      "nombre": "unico"
+      "name": "unico"
     },
     {
       "id": 2,
-      "nombre": "contenedor"
+      "name": "contenedor"
     },
     {
       "id": 3,
-      "nombre": "lista"
+      "name": "lista"
     }
 	],
-	"tipos_datos": [
+	"dataTypes": [
     {
       "id": 1,
-      "nombre": "integer"
+      "name": "integer"
     },
     {
       "id": 2,
-      "nombre": "decimal"
+      "name": "decimal"
     },
     {
       "id": 3,
-      "nombre": "string"
+      "name": "string"
     },
     {
       "id": 4,
-      "nombre": "date"
+      "name": "date"
     },
     {
       "id": 5,
-      "nombre": "time"
+      "name": "time"
     },
     {
       "id": 6,
-      "nombre": "datetime"
+      "name": "datetime"
     },
     {
       "id": 7,
-      "nombre": "boolean"
+      "name": "boolean"
     },
     {
       "id": 8,
-      "nombre": "list"
+      "name": "list"
     },
     {
       "id": 9,
-      "nombre": "object"
+      "name": "object"
     }
   ],
-  "alineaciones_horizontales": [
+  "alignments": [
     {
       "id": 1,
-      "nombre": "izquierda"
+      "name": "izquierda"
     },
     {
       "id": 2,
-      "nombre": "derecha"
+      "name": "derecha"
     },
     {
       "id": 3,
-      "nombre": "centrado"
+      "name": "centrado"
     },
     {
       "id": 4,
-      "nombre": "justificado"
+      "name": "justificado"
     }
   ],
-  "alineaciones_verticales": [
+  "verticalAlignments": [
     {
       "id": 1,
-      "nombre": "arriba"
+      "name": "arriba"
     },
     {
       "id": 2,
-      "nombre": "centro"
+      "name": "centro"
     },
     {
       "id": 3,
-      "nombre": "abajo"
+      "name": "abajo"
     }
   ]
-  }
+}
 
 
 /*

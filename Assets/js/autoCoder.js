@@ -25,7 +25,7 @@ function set() {
     
     var div = document.createElement("div");
     $(div).addClass("row controldiv");
-    jsonSuport.CreateSelectForList(div, generalOptions.plataformas_de_salida, "plataforma", setSalidas);
+    jsonSuport.CreateSelectForList(div, generalOptions.outputPlataforms, "plataform", setSalidas);
     $(mainContainer).children(".viewHeader").append(div);
     
 
@@ -42,37 +42,37 @@ function set() {
 }
 
 function setSalidas(select,obj){
-    console.log("plataforma changed");
+    console.log("plataform changed");
     var div = $tab(select).closest(".controldiv");
-    $tab("#salida").remove();
-    $tab("#opciones").remove();
-    $tab("#tamaños").remove();
-    $tab("#orientacion").remove();
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tipos_de_salida")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].tipos_de_salida, "salida", setOpciones);
+    $tab("#output").remove();
+    $tab("#options").remove();
+    $tab("#sizes").remove();
+    $tab("#orientation").remove();
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"outputTypes")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].outputTypes, "output", setOpciones);
     }
 }
 
 function setOpciones(select,obj){
-    console.log("salida changed");
+    console.log("output changed");
     var div = $tab(select).closest(".controldiv");
-    $tab("#opciones").remove();
-    $tab("#tamaños").remove();
-    $tab("#orientacion").remove();
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"opciones")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].opciones, "opciones", null);
+    $tab("#options").remove();
+    $tab("#sizes").remove();
+    $tab("#orientation").remove();
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"options")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].options, "options", null);
     }
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"tamaños_pantalla")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].tamaños_pantalla, "tamaños", setTamaño);
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"screenSizes")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].screenSizes, "sizes", setSize);
     }
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"orientacion")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].orientacion, "orientacion");
+    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"orientation")){
+        jsonSuport.CreateSelectForList(div,obj[select.value -1].orientation, "orientation");
     }
 }
 
-function setTamaño(select,obj){
+function setSize(select,obj){
     if(select.value > 0){
-        console.log("tamaño changed");
+        console.log("size changed");
         getContext();
         var ancho =  select.options[select.selectedIndex].text.split("-")[0].split("*")[0];
         var alto =   select.options[select.selectedIndex].text.split("-")[0].split("*")[1];
@@ -259,7 +259,7 @@ function EditElement(btn) {
     $(btn).attr("onclick", "CloseEdit(this)")
     btnEdit = btn;
     $("#mySidenavElements").html("");
-    jsonSuport.ForEachInJson(generalOptions.opciones_elemento_vista, jsonSuport.CreateElementsForList)
+    jsonSuport.ForEachInJson(generalOptions.viewElementOptions, jsonSuport.CreateElementsForList)
 }
   
 function CloseEdit(btn) {

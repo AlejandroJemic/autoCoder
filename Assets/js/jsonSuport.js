@@ -43,16 +43,16 @@ var jsonSuport = {
 	},
 	CreateElementsForList: function(obj){
 		var menu =  $("#mySidenavElements");
-		console.log("creating element: " +  obj.nombre + ", type: "  + obj.type)
+		console.log("creating element: " +  obj.name + ", type: "  + obj.type)
 		if(obj.type == "select")
 		{
 			if(jsonSuport.HasProprty(generalOptions, obj.options)){
-			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.nombre,null,"col-12");
+			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.name,null,"col-12");
 			}
 		}
 		if(obj.type == "text")
 		{
-			jsonSuport.CreateInputText(menu,obj.options, obj.nombre,null,"col-12");
+			jsonSuport.CreateInputText(menu,obj.options, obj.name,null,"col-12");
 		}
 	},
 	CreateInputText: function(ParentElementHeader,options,text,onchangeFunc,col){
@@ -102,11 +102,11 @@ var jsonSuport = {
 		this.PopulateSelectFromList(select,obj,text);
         $(ParentElementHeader).append(select);
         if(obj.length == 1){
-            if(this.HasProprty(obj[0],"tamaños_pantalla")){
-                this.CreateSelectForList(ParentElementHeader,obj[0].tamaños_pantalla, "tamaños", setTamaño);
+            if(this.HasProprty(obj[0],"screenSizes")){
+                this.CreateSelectForList(ParentElementHeader,obj[0].screenSizes, "sizes", setSize);
 			}
-			if(this.HasProprty(obj[0],"orientacion")){
-				jsonSuport.CreateSelectForList(ParentElementHeader,obj[0].orientacion, "orientacion");
+			if(this.HasProprty(obj[0],"orientation")){
+				jsonSuport.CreateSelectForList(ParentElementHeader,obj[0].orientation, "orientation");
 			}
         }
 	},
@@ -116,7 +116,7 @@ var jsonSuport = {
 		}
 		if(this.isArray(obj)){
 			$.each(obj, function(i, p) {
-				$(select).append($('<option></option>').val(p.id).html(p.nombre));
+				$(select).append($('<option></option>').val(p.id).html(p.name));
 			});
 			if(obj.length == 1){
                 $(select).val(1);

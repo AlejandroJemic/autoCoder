@@ -10,50 +10,55 @@
     },
     "outputs": [
       {
-        "numero": 1,
-        "nombre": "nombre vista 1",
-        "tipo": "vista o servicio",
-        "plataforma_de_salida": {
+        "number": 1,
+        "name": "nombre vista 1",
+        "type": "vista o servicio",
+        "outputPlataform": {
           "id": 1,
-          "nombre": ".net",
-          "tipo_de_salida": {
+          "name": ".net",
+          "outputType": {
             "id": 1,
-            "nombre": "pagina web",
-            "tamaño_pantalla": {
-              "alto": 100,
-              "ancho": 50
+            "name": "pagina web",
+            "screenSize": {
+              "high": 100,
+              "width": 50
             },
-            "opcion": {
+            "option": {
               "id": 1,
-              "nombre": "aspx"
+              "name": "aspx"
             }
           }
         },
-        "elementos": [
+        "elements": [
           {
-            "nombre": "nombre elemento",
-            "tipoelemento": "select,<tipos_elemntos>",
+            "name": "nombre elemento",
+            "elementType": "select,elementTypes",
             "id": "asg-123-asd",
             "idParent": "asa-123-asd",
-            "alto": 20,
-            "ancho": 200,
+            "high": 20,
+            "width": 200,
             "xpos": 10,
             "ypos": 10,
-            "tipoControl": "select,tipos de controles por plataforma,<selectedPlataform>",
-            "tipoDato": "select,tipos de datos",
+            "controlType": "select,selectedPlataformControls",
+            "dataType": "select,dataTypes",
             "margin": 0,
             "pading": 0,
             "color": "#225544",
-            "align": "select,alineaciones",
-            "verticalalingn": "select, alineacione verticales",
+            "align": "select,alignments",
+            "verticalalingn": "select, verticalAlignments",
             "cssClass": "clase1",
             "bgColor": "#665544",
             "fontName": "arial",
             "fontSize": 24,
-            "bbdd_tabla_asociada": "tabla 1",
-            "bbdd_campo_asociado": "campo 1",
-            "Where": "tipo dato = 1",
-            "sub_elementos": [
+            "asossiatedTable": "tabla 1",
+            "associatedField": "campo 1",
+            "whereFilter": "tipo dato = 1",
+            "onClick": "eventHandler",
+            "onChanged": "eventHandler",
+            "onKeyPress": "eventHandler",
+            "onFocus": "eventHandler",
+            "onBlur": "eventHandler",
+            "subElements": [
               {},
               {},
               {}
