@@ -56,7 +56,7 @@ var jsonSuport = {
 		if(obj.type == "select")
 		{
 			if (obj.name === "controlType") {
-				jsonSuport.CreateSelectForList(menu,SELECTED_PLATAFORM_CONTRLS, obj.name,null,cols);
+				jsonSuport.CreateSelectForList(menu,SELECTED_PLATAFORM_CONTROLS, obj.name,null,cols);
 			}
 			else if(jsonSuport.HasProprty(generalOptions, obj.options)) {
 			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.name,null,cols);
@@ -126,6 +126,7 @@ var jsonSuport = {
         }
 	},
 	PopulateSelectFromList: function(select,obj,text){
+		$(select).find('option').remove();
 		if(obj.length > 1){
 			$(select).append($('<option></option>').val(0).html(text));
 		}

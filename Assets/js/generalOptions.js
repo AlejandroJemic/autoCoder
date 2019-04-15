@@ -779,8 +779,954 @@ var generalOptions={
     {
       "id": 27,
       "name": "section"
-    }
-  ]
+		},
+		{
+			"id": 28,
+			"name": "-- Text contentSection --"
+		},
+		{
+			"id": 29,
+			"name": "blockquote"
+		},
+		{
+			"id": 30,
+			"name": "dd"
+		},
+		{
+			"id": 31,
+			"name": "dir"
+		},
+		{
+			"id": 32,
+			"name": "div"
+		},
+		{
+			"id": 33,
+			"name": "dl"
+		},
+		{
+			"id": 34,
+			"name": "dt"
+		},
+		{
+			"id": 35,
+			"name": "figcaption"
+		},
+		{
+			"id": 36,
+			"name": "figure"
+		},
+		{
+			"id": 37,
+			"name": "hr"
+		},
+		{
+			"id": 38,
+			"name": "li"
+		},
+		{
+			"id": 39,
+			"name": "main"
+		},
+		{
+			"id": 40,
+			"name": "ol"
+		},
+		{
+			"id": 41,
+			"name": "p"
+		},
+		{
+			"id": 42,
+			"name": "pre"
+		},
+		{
+			"id": 43,
+			"name": "ul"
+		},
+		{
+			"id": 44,
+			"name": "-- Inline text semanticsSection --"
+		},
+		{
+			"id": 45,
+			"name": "a"
+		},
+		{
+			"id": 46,
+			"name": "abbr"
+		},
+		{
+			"id": 47,
+			"name": "b"
+		},
+		{
+			"id": 48,
+			"name": "bdi"
+		},
+		{
+			"id": 49,
+			"name": "bdo"
+		},
+		{
+			"id": 50,
+			"name": "br"
+		},
+		{
+			"id": 51,
+			"name": "cite"
+		},
+		{
+			"id": 52,
+			"name": "code"
+		},
+		{
+			"id": 53,
+			"name": "data"
+		},
+		{
+			"id": 54,
+			"name": "dfn"
+		},
+		{
+			"id": 55,
+			"name": "em"
+		},
+		{
+			"id": 56,
+			"name": "i"
+		},
+		{
+			"id": 57,
+			"name": "kbd"
+		},
+		{
+			"id": 58,
+			"name": "mark"
+		},
+		{
+			"id": 59,
+			"name": "q"
+		},
+		{
+			"id": 60,
+			"name": "rb"
+		},
+		{
+			"id": 61,
+			"name": "rp"
+		},
+		{
+			"id": 61,
+			"name": "rt"
+		},
+		{
+			"id": 63,
+			"name": "rtc"
+		},
+		{
+			"id": 64,
+			"name": "ruby"
+		},
+		{
+			"id": 65,
+			"name": "s"
+		},
+		{
+			"id": 66,
+			"name": "samp"
+		},
+		{
+			"id": 67,
+			"name": "small"
+		},
+		{
+			"id": 68,
+			"name": "span"
+		},
+		{
+			"id": 69,
+			"name": "strong"
+		},
+		{
+			"id": 70,
+			"name": "sub"
+		},
+		{
+			"id": 71,
+			"name": "sup"
+		},
+		{
+			"id": 72,
+			"name": "time"
+		},
+		{
+			"id": 73,
+			"name": "tt"
+		},
+		{
+			"id": 74,
+			"name": "u"
+		},
+		{
+			"id": 75,
+			"name": "var"
+		},
+		{
+			"id": 76,
+			"name": "wbr"
+		},
+		{
+			"id": 77,
+			"name": "-- Image and multimediaSection --"
+		},
+		{
+			"id": 78,
+			"name": "area"
+		},
+		{
+			"id": 79,
+			"name": "audio"
+		},
+		{
+			"id": 80,
+			"name": "img"
+		},
+		{
+			"id": 81,
+			"name": "map"
+		},
+		{
+			"id": 82,
+			"name": "track"
+		},
+		{
+			"id": 83,
+			"name": "video"
+		},
+		{
+			"id": 84,
+			"name": "-- Embedded contentSection --"
+		},
+		{
+			"id": 85,
+			"name": "applet"
+		},
+		{
+			"id": 86,
+			"name": "embed"
+		},
+		{
+			"id": 87,
+			"name": "iframe"
+		},
+		{
+			"id": 88,
+			"name": "noembed"
+		},
+		{
+			"id": 89,
+			"name": "object"
+		},
+		{
+			"id": 90,
+			"name": "param"
+		},
+		{
+			"id": 91,
+			"name": "picture"
+		},
+		{
+			"id": 92,
+			"name": "source"
+		},
+		{
+			"id": 93,
+			"name": "-- ScriptingSection --"
+		},
+		{
+			"id": 94,
+			"name": "canvas"
+		},
+		{
+			"id": 94,
+			"name": "noscript"
+		},
+		{
+			"id": 95,
+			"name": "script"
+		},
+		{
+			"id": 96,
+			"name": "-- Demarcating editsSection --"
+		},
+		{
+			"id": 97,
+			"name": "del"
+		},
+		{
+			"id": 98,
+			"name": "ins"
+		},
+		{
+			"id": 99,
+			"name": "-- Table contentSection --"
+		},
+		{
+			"id": 100,
+			"name": "caption"
+		},
+		{
+			"id": 101,
+			"name": "col"
+		},
+		{
+			"id": 102,
+			"name": "colgroup"
+		},
+		{
+			"id": 103,
+			"name": "table"
+		},
+		{
+			"id": 104,
+			"name": "tbody"
+		},
+		{
+			"id": 105,
+			"name": "td"
+		},
+		{
+			"id": 106,
+			"name": "tfoot"
+		},
+		{
+			"id": 107,
+			"name": "th"
+		},
+		{
+			"id": 108,
+			"name": "thead"
+		},
+		{
+			"id": 109,
+			"name": "tr"
+		},
+		{
+			"id": 110,
+			"name": "-- FormsSection --"
+		},
+		{
+			"id": 111,
+			"name": "button"
+		},
+		{
+			"id": 112,
+			"name": "datalist"
+		},
+		{
+			"id": 113,
+			"name": "fieldset"
+		},
+		{
+			"id": 114,
+			"name": "form"
+		},
+		{
+			"id": 115,
+			"name": "input"
+		},
+		{
+			"id": 116,
+			"name": "label"
+		},
+		{
+			"id": 117,
+			"name": "legend"
+		},
+		{
+			"id": 118,
+			"name": "meter"
+		},
+		{
+			"id": 119,
+			"name": "optgroup"
+		},
+		{
+			"id": 120,
+			"name": "option"
+		},
+		{
+			"id": 121,
+			"name": "output"
+		},
+		{
+			"id": 122,
+			"name": "progress"
+		},
+		{
+			"id": 123,
+			"name": "select"
+		},
+		{
+			"id": 124,
+			"name": "textarea"
+		},
+		{
+			"id": 125,
+			"name": "-- Interactive elementsSection --"
+		},
+		{
+			"id": 126,
+			"name": "details"
+		},
+		{
+			"id": 127,
+			"name": "dialog"
+		},
+		{
+			"id": 128,
+			"name": "menu"
+		},
+		{
+			"id": 129,
+			"name": "menuitem"
+		},
+		{
+			"id": 130,
+			"name": "summary"
+		},
+		{
+			"id": 131,
+			"name": "-- Web ComponentsSection --"
+		},
+		{
+			"id": 132,
+			"name": "content"
+		},
+		{
+			"id": 133,
+			"name": "element"
+		},
+		{
+			"id": 134,
+			"name": "shadow"
+		},
+		{
+			"id": 135,
+			"name": "slot"
+		},
+		{
+			"id": 136,
+			"name": "template"
+		},
+		{
+			"id": 137,
+			"name": "-- Obsolete and deprecated elementsSection --"
+		},
+		{
+			"id": 138,
+			"name": "acronym"
+		},
+		{
+			"id": 139,
+			"name": "applet"
+		},
+		{
+			"id": 140,
+			"name": "basefont"
+		},
+		{
+			"id": 141,
+			"name": "bgsound"
+		},
+		{
+			"id": 142,
+			"name": "big"
+		},
+		{
+			"id": 143,
+			"name": "blink"
+		},
+		{
+			"id": 144,
+			"name": "center"
+		},
+		{
+			"id": 145,
+			"name": "command"
+		},
+		{
+			"id": 146,
+			"name": "content"
+		},
+		{
+			"id": 147,
+			"name": "dir"
+		},
+		{
+			"id": 148,
+			"name": "element"
+		},
+		{
+			"id": 149,
+			"name": "font"
+		},
+		{
+			"id": 150,
+			"name": "frame"
+		},
+		{
+			"id": 151,
+			"name": "frameset"
+		},
+		{
+			"id": 152,
+			"name": "image"
+		},
+		{
+			"id": 153,
+			"name": "isindex"
+		},
+		{
+			"id": 154,
+			"name": "keygen"
+		},
+		{
+			"id": 155,
+			"name": "listing"
+		},
+		{
+			"id": 1,
+			"name": "marquee"
+		},
+		{
+			"id": 156,
+			"name": "menuitem"
+		},
+		{
+			"id": 157,
+			"name": "multicol"
+		},
+		{
+			"id": 158,
+			"name": "nextid"
+		},
+		{
+			"id": 159,
+			"name": "nobr"
+		},
+		{
+			"id": 160,
+			"name": "noembed"
+		},
+		{
+			"id": 160,
+			"name": "noframes"
+		},
+		{
+			"id": 161,
+			"name": "plaintext"
+		},
+		{
+			"id": 162,
+			"name": "shadow"
+		},
+		{
+			"id": 163,
+			"name": "spacer"
+		},
+		{
+			"id": 164,
+			"name": "strike"
+		},
+		{
+			"id": 165,
+			"name": "tt"
+		},
+		{
+			"id": 166,
+			"name": "xmp"
+		}
+	],
+	"aspxControlTypes":[
+		{
+			"id": 1,
+			"name": "HTMLAnchor"
+		},
+		{
+			"id": 2,
+			"name": "HTMLButton"
+		},
+		{
+			"id": 3,
+			"name": "HTMLImage"
+		},
+		{
+			"id": 4,
+			"name": "HTMLInputbutton"
+		},
+		{
+			"id": 5,
+			"name": "HTMLInputCheckbox"
+		},
+		{
+			"id": 6,
+			"name": "HTMLInputHidden"
+		},
+		{
+			"id": 7,
+			"name": "HTMLInputImage"
+		},
+		{
+			"id": 8,
+			"name": "HTMLInputRadiobutton"
+		},
+		{
+			"id": 9,
+			"name": "HTMLTable"
+		},
+		{
+			"id": 10,
+			"name": "HTMLTextarea"
+		},
+		{
+			"id": 11,
+			"name": "AdRotator"
+		},
+		{
+			"id": 12,
+			"name": "Button"
+		},
+		{
+			"id": 13,
+			"name": "Calendar"
+		},
+		{
+			"id": 14,
+			"name": "Checkbox"
+		},
+		{
+			"id": 15,
+			"name": "CheckboxList"
+		},
+		{
+			"id": 16,
+			"name": "DataList"
+		},
+		{
+			"id": 17,
+			"name": "DropdownList"
+		},
+		{
+			"id": 18,
+			"name": "Hyperlink"
+		},
+		{
+			"id": 19,
+			"name": "Image"
+		},
+		{
+			"id": 20,
+			"name": "ImageButton"
+		},
+		{
+			"id": 21,
+			"name": "Label"
+		},
+		{
+			"id": 22,
+			"name": "LinkButton"
+		},
+		{
+			"id": 23,
+			"name": "Listbox"
+		},
+		{
+			"id": 24,
+			"name": "Literal"
+		},
+		{
+			"id": 25,
+			"name": "Panel"
+		},
+		{
+			"id": 26,
+			"name": "Radiobutton"
+		},
+		{
+			"id": 27,
+			"name": "RadiobuttonList"
+		},
+		{
+			"id": 28,
+			"name": "Repeater"
+		},
+		{
+			"id": 29,
+			"name": "Table"
+		},
+		{
+			"id": 30,
+			"name": "Textbox"
+		},
+		{
+			"id": 31,
+			"name": "XML"
+		},
+		{
+			"id": 32,
+			"name": "CompareValidator"
+		},
+		{
+			"id": 33,
+			"name": "CustomValidator"
+		},
+		{
+			"id": 34,
+			"name": "RangeValidator"
+		},
+		{
+			"id": 35,
+			"name": "RegularExpressionValidator"
+		},
+		{
+			"id": 36,
+			"name": "RequiredFieldValidator"
+		},
+		{
+			"id": 37,
+			"name": "Validationsummary"
+		}
+	],
+	"androidControlTypes":[
+		{
+			"id": 0,
+			"name": "-- UI layouts --"
+		},
+		{
+			"id": 1,
+			"name": "LinearLayout"
+		},
+		{
+			"id": 2,
+			"name": "RelativeLayout"
+		},
+		{
+			"id": 3,
+			"name": "TableLayout"
+		},
+		{
+			"id":4 ,
+			"name": "FrameLayout"
+		},
+		{
+			"id": 5,
+			"name": "RadioGroup"
+		},
+		{
+			"id": 6,
+			"name": "ListView"
+		},
+		{
+			"id": 7,
+			"name": "GridView"
+		},
+		{
+			"id": 8,
+			"name": "-- UI Controls --"
+		},
+		{
+			"id": 9,
+			"name": "Button"
+		},
+		{
+			"id": 10,
+			"name": "imageButton"
+		},
+		{
+			"id": 11,
+			"name": "TextView"
+		},
+		{
+			"id": 12,
+			"name": "EditText"
+		},
+		{
+			"id": 13,
+			"name": "CheckBox"
+		},
+		{
+			"id": 14,
+			"name": "RadioButton"
+		},
+		{
+			"id": 15,
+			"name": "ToggleButton"
+		},
+		{
+			"id": 16,
+			"name": "Spinner"
+		},
+		{
+			"id": 17,
+			"name": "AutoCompleteTextView"
+		},
+		{
+			"id": 18,
+			"name": "Progress Bar"
+		},
+		{
+			"id": 19,
+			"name": "Pickers"
+		},
+		{
+			"id": 20,
+			"name": "ImageView"
+		}
+	],
+	"iosControlTypes":[
+		{
+			"id": 0,
+			"name": "-- Bars --"
+		},
+		{
+			"id": 1,
+			"name": "Navigation Bars"
+		},
+		{
+			"id": 2,
+			"name": "Search Bars"
+		},
+		{
+			"id": 3,
+			"name": "Status Bars"
+		},
+		{
+			"id": 4,
+			"name": "Tab Bars"
+		},
+		{
+			"id": 5,
+			"name": "Toolbars"
+		},
+		{
+			"id": 6,
+			"name": "-- Views --"
+		},
+		{
+			"id": 7,
+			"name": "Action Sheets"
+		},
+		{
+			"id": 8,
+			"name": "Activity Views"
+		},
+		{
+			"id": 9,
+			"name": "Alerts"
+		},
+		{
+			"id": 10,
+			"name": "Collections"
+		},
+		{
+			"id": 11,
+			"name": "Image Views"
+		},
+		{
+			"id": 12,
+			"name": "Maps"
+		},
+		{
+			"id": 13,
+			"name": "Pages"
+		},
+		{
+			"id": 14,
+			"name": "Popovers"
+		},
+		{
+			"id": 15,
+			"name": "Scroll Views"
+		},
+		{
+			"id": 16,
+			"name": "Split Views"
+		},
+		{
+			"id": 17,
+			"name": "Tables"
+		},
+		{
+			"id": 18,
+			"name": "Text Views"
+		},
+		{
+			"id": 19,
+			"name": "Web Views"
+		},
+		{
+			"id": 20,
+			"name": "list view"
+		},
+		{
+			"id": 21,
+			"name": "grid view "
+		},
+		{
+			"id": 22,
+			"name": "-- Controls --"
+		},
+		{
+			"id": 23,
+			"name": "Buttons"
+		},
+		{
+			"id": 24,
+			"name": "Edit Menus"
+		},
+		{
+			"id": 25,
+			"name": "Labels"
+		},
+		{
+			"id": 26,
+			"name": "Page Controls"
+		},
+		{
+			"id": 27,
+			"name": "Pickers"
+		},
+		{
+			"id": 28,
+			"name": "Progress Indicators"
+		},
+		{
+			"id": 29,
+			"name": "Refresh Content Controls"
+		},
+		{
+			"id": 30,
+			"name": "Segmented Controls"
+		},
+		{
+			"id": 31,
+			"name": "Sliders"
+		},
+		{
+			"id": 32,
+			"name": "Steppers"
+		},
+		{
+			"id": 33,
+			"name": "Switches"
+		},
+		{
+			"id": 34,
+			"name": "Text Fields"
+		}
+	]
 }
 
 
@@ -788,151 +1734,6 @@ var generalOptions={
 menu general
 
 
-
-
--- Text contentSection --
-blockquote
-dd
-dir
-div
-dl
-dt
-figcaption
-figure
-hr
-li
-main
-ol
-p
-pre
-ul
--- Inline text semanticsSection --
-a
-abbr
-b
-bdi
-bdo
-br
-cite
-code
-data
-dfn
-em
-i
-kbd
-mark
-q
-rb
-rp
-rt
-rtc
-ruby
-s
-samp
-small
-span
-<strong>
-sub
-sup
-time
-tt
-u
-var
-wbr
--- Image and multimediaSection --
-area
-audio
-img
-map
-track
-video
--- Embedded contentSection --
-applet
-embed
-iframe
-noembed
-object
-param
-picture
-source
--- ScriptingSection --
-canvas
-noscript
-script
--- Demarcating editsSection --
-del
-ins
--- Table contentSection --
-caption
-col
-colgroup
-table
-tbody
-td
-tfoot
-th
-thead
-tr
--- FormsSection --
-button
-datalist
-fieldset
-form
-input
-label
-legend
-meter
-optgroup
-option
-output
-progress
-select
-textarea
--- Interactive elementsSection --
-details
-dialog
-menu
-menuitem
-summary
--- Web ComponentsSection --
-content
-element
-shadow
-slot
-template
--- Obsolete and deprecated elementsSection --
-acronym
-applet
-basefont
-bgsound
-big
-blink
-center
-command
-content
-dir
-element
-font
-frame
-frameset
-image
-isindex
-keygen
-listing
-marquee
-menuitem
-multicol
-nextid
-nobr
-noembed
-noframes
-plaintext
-shadow
-spacer
-strike
-tt
-xmp
-	
 
 opcines de servicio
 	url
@@ -982,107 +1783,4 @@ opcines de servicio
 			campo asociado
 			condicion where de borde
 	
-	tipos de controles por plataforma
-		
-		web	
-
-		
-		android
-			UI layouts
-				LinearLayout
-				RelativeLayout
-				TableLayout
-				FrameLayout
-				RadioGroup
-				ListView
-				GridView
-			UI Controls
-				Button
-				imageButton
-				TextView
-				EditText
-				CheckBox
-				RadioButton
-				ToggleButton
-				Spinner
-				AutoCompleteTextView
-				Progress Bar
-				Pickers
-				ImageView
-		
-		iphone
-			Bars
-				Navigation Bars
-				Search Bars
-				Status Bars
-				Tab Bars
-				Toolbars
-			Views
-				Action Sheets
-				Activity Views
-				Alerts
-				Collections
-				Image Views
-				Maps
-				Pages
-				Popovers
-				Scroll Views
-				Split Views
-				Tables
-				Text Views
-				Web Views
-				list view
-				grid view 
-			Controls
-				Buttons
-				Edit Menus
-				Labels
-				Page Controls
-				Pickers
-				Progress Indicators
-				Refresh Content Controls
-				Segmented Controls
-				Sliders
-				Steppers
-				Switches
-				Text Fields
-
-			aspx
-				HTMLAnchor
-				HTMLButton
-				HTMLImage
-				HTMLInputbutton
-				HTMLInputCheckbox
-				HTMLInputHidden
-				HTMLInputImage
-				HTMLInputRadiobutton
-				HTMLTable
-				HTMLTextarea
-				AdRotator
-				Button
-				Calendar
-				Checkbox
-				CheckboxList
-				DataList
-				DropdownList
-				Hyperlink
-				Image
-				ImageButton
-				Label
-				LinkButton
-				Listbox
-				Literal
-				Panel
-				Radiobutton
-				RadiobuttonList
-				Repeater
-				Table
-				Textbox
-				XML
-				CompareValidator
-				CustomValidator
-				RangeValidator
-				RegularExpressionValidator
-				RequiredFieldValidator
-				Validationsummary
 */

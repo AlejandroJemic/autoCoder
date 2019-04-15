@@ -1,7 +1,7 @@
 var CURRENT_TAB = 0;
 var MAIN_CONTAINER;
 var EDIT_BUTTON;
-var SELECTED_PLATAFORM_CONTRLS
+var SELECTED_PLATAFORM_CONTROLS
 
 function getContext() {
     CURRENT_TAB = $('#jqxTabs').jqxTabs('selectedItem');
@@ -17,36 +17,40 @@ function getCurrentViewPlataform() {
 }
 
 function setCurrentViewControls() {
-     switch (getCurrentViewPlataform()) {
-         case "html":
-            SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
+    switch (getCurrentViewPlataform()) {
+         case "1": // html
+            SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
              break;
-        case ".net":
-            if ($tab("#output").val() === "pagina web" && $tab("#options").val() === "aspx") {
-                SELECTED_PLATAFORM_CONTRLS = generalOptions.webFormsControlTypes;
+        case "2": //.net
+            if ($tab("#output").val() === "1" && $tab("#options").val() === "1") { // aspx web page
+                SELECTED_PLATAFORM_CONTROLS = generalOptions.webFormsControlTypes;
             }
-            if ($tab("#output").val() === "pagina web" && $tab("#options").val() === "mvc") {
-                SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
-            }
-            break;
-        case "nodejs":
-            if ($tab("#output").val() === "pagina web" ) {
-                SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
+            if ($tab("#output").val() === "1" && $tab("#options").val() === "2") { // mvc web page
+                SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
             }
             break;
-        case "android":
-            SELECTED_PLATAFORM_CONTRLS = generalOptions.androidControlTypes;
+        case "3": // nodejs
+            if ($tab("#output").val() === "1" ) {
+                SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
+            }
             break;
-        case "ios":
-            SELECTED_PLATAFORM_CONTRLS = generalOptions.iosControlTypes;
+        case "4": // android
+            SELECTED_PLATAFORM_CONTROLS = generalOptions.androidControlTypes;
+            break;
+        case "5": // ios
+            SELECTED_PLATAFORM_CONTROLS = generalOptions.iosControlTypes;
             break;
          default:
-            SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
+            SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
              break;
-     }
+    }
+    
+    var select =  $("#sideMenu").children("#controlType");
+    jsonSuport.PopulateSelectFromList(select,SELECTED_PLATAFORM_CONTROLS,"controlType");
 }
 
 function set() {
+    SELECTED_PLATAFORM_CONTROLS = undefined;
     getContext();
     var sid = setid(MAIN_CONTAINER);
     var inputAlto = $(MAIN_CONTAINER).find("#alto");
@@ -110,6 +114,7 @@ function setOpciones(select, obj) {
     if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "orientation")) {
         jsonSuport.CreateSelectForList(div, obj[select.value - 1].orientation, "orientation");
     }
+    setCurrentViewControls();
 }
 
 function setSize(select, obj) {

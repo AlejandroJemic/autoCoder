@@ -1,6 +1,7 @@
 ## MODELADOR
 * [x] agregar contexto tab local o elemento local a las busquedas de elementos
 * [x] agregar parametros coneccion ddbb en menu general
+* [ ] test db connection por medio de api
 * [x] definir estructura json proyecto (vista)
 * [x] agregar opciones de cada elemento
 * [x] eliminar opciones de cada elemento al eliminarlo
@@ -40,7 +41,8 @@
 
 ## GENERADOR
 * [x] exponer estructura de bbdd desde servicio
-* [ ] interpretar json de entrada
+* [ ] generar servicio test db connection
+* [ ] interpretar json de entrada 
 * [ ] recibir json (proyecto vista) en servicio
 * [ ] generar codigo base cada vista
     * [ ] .net
