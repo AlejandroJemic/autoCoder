@@ -1,34 +1,68 @@
-var CurrentTab = 0;
-var mainContainer;
-var btnEdit;
+var CURRENT_TAB = 0;
+var MAIN_CONTAINER;
+var EDIT_BUTTON;
+var SELECTED_PLATAFORM_CONTRLS
 
-function getContext(){
-    CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
-    mainContainer = $($(".MainElement")[CurrentTab]);
+function getContext() {
+    CURRENT_TAB = $('#jqxTabs').jqxTabs('selectedItem');
+    MAIN_CONTAINER = $($(".MainElement")[CURRENT_TAB]);
 }
-function $tab (selector){
+function $tab(selector) {
     getContext();
-    return $($(selector,mainContainer));
+    return $($(selector, MAIN_CONTAINER));
+}
+
+function getCurrentViewPlataform() {
+    return $tab("#plataform").val();
+}
+
+function setCurrentViewControls() {
+     switch (getCurrentViewPlataform()) {
+         case "html":
+            SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
+             break;
+        case ".net":
+            if ($tab("#output").val() === "pagina web" && $tab("#options").val() === "aspx") {
+                SELECTED_PLATAFORM_CONTRLS = generalOptions.webFormsControlTypes;
+            }
+            if ($tab("#output").val() === "pagina web" && $tab("#options").val() === "mvc") {
+                SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
+            }
+            break;
+        case "nodejs":
+            if ($tab("#output").val() === "pagina web" ) {
+                SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
+            }
+            break;
+        case "android":
+            SELECTED_PLATAFORM_CONTRLS = generalOptions.androidControlTypes;
+            break;
+        case "ios":
+            SELECTED_PLATAFORM_CONTRLS = generalOptions.iosControlTypes;
+            break;
+         default:
+            SELECTED_PLATAFORM_CONTRLS = generalOptions.htmlControlTypes;
+             break;
+     }
 }
 
 function set() {
     getContext();
-    var sid = setid(mainContainer);
-    var inputAlto = $(mainContainer).find("#alto");
-    var inputAncho = $(mainContainer).find("#ancho");
+    var sid = setid(MAIN_CONTAINER);
+    var inputAlto = $(MAIN_CONTAINER).find("#alto");
+    var inputAncho = $(MAIN_CONTAINER).find("#ancho");
 
-    $(mainContainer).height(inputAlto.val());
-    $(mainContainer).width(inputAncho.val());
+    $(MAIN_CONTAINER).height(inputAlto.val());
+    $(MAIN_CONTAINER).width(inputAncho.val());
     // // $(".viewHeader").width(ancho.value - 17);
-    $(mainContainer).resizable({ containment: ".maindiv" });
-    $(mainContainer).resize = resize($(mainContainer));
-    
+    $(MAIN_CONTAINER).resizable({ containment: ".maindiv" });
+    $(MAIN_CONTAINER).resize = resize($(MAIN_CONTAINER));
+
     var div = document.createElement("div");
     $(div).addClass("row controldiv");
     jsonSuport.CreateSelectForList(div, generalOptions.outputPlataforms, "plataform", setSalidas);
-    $(mainContainer).children(".viewHeader").append(div);
-    
-
+    $(MAIN_CONTAINER).children(".viewHeader").append(div);
+    setCurrentViewControls();
     // //loop padres
     // contaier.parents().each(function( index ) {
     //     logElement(this,index);
@@ -41,41 +75,49 @@ function set() {
     //logElement($(mainContainer), CurrentTab);
 }
 
-function setSalidas(select,obj){
+
+/**
+ *get calls when de main elmement of a view changes the selected output paltaform
+ *
+ * @param {input select} select
+ * @param {generalOptions.outputPlataforms} obj
+ */
+function setSalidas(select, obj) {
     console.log("plataform changed");
     var div = $tab(select).closest(".controldiv");
     $tab("#output").remove();
     $tab("#options").remove();
     $tab("#sizes").remove();
     $tab("#orientation").remove();
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"outputTypes")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].outputTypes, "output", setOpciones);
+    if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "outputTypes")) {
+        jsonSuport.CreateSelectForList(div, obj[select.value - 1].outputTypes, "output", setOpciones);
     }
+    setCurrentViewControls();
 }
 
-function setOpciones(select,obj){
+function setOpciones(select, obj) {
     console.log("output changed");
     var div = $tab(select).closest(".controldiv");
     $tab("#options").remove();
     $tab("#sizes").remove();
     $tab("#orientation").remove();
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"options")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].options, "options", null);
+    if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "options")) {
+        jsonSuport.CreateSelectForList(div, obj[select.value - 1].options, "options", null);
     }
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"screenSizes")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].screenSizes, "sizes", setSize);
+    if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "screenSizes")) {
+        jsonSuport.CreateSelectForList(div, obj[select.value - 1].screenSizes, "sizes", setSize);
     }
-    if(select.value > 0 && jsonSuport.HasProprty(obj[select.value -1],"orientation")){
-        jsonSuport.CreateSelectForList(div,obj[select.value -1].orientation, "orientation");
+    if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "orientation")) {
+        jsonSuport.CreateSelectForList(div, obj[select.value - 1].orientation, "orientation");
     }
 }
 
-function setSize(select,obj){
-    if(select.value > 0){
+function setSize(select, obj) {
+    if (select.value > 0) {
         console.log("size changed");
         getContext();
-        var ancho =  select.options[select.selectedIndex].text.split("-")[0].split("*")[0];
-        var alto =   select.options[select.selectedIndex].text.split("-")[0].split("*")[1];
+        var ancho = select.options[select.selectedIndex].text.split("-")[0].split("*")[0];
+        var alto = select.options[select.selectedIndex].text.split("-")[0].split("*")[1];
         var inputAlto = $tab("#alto").val(alto);
         var inputAncho = $tab("#ancho").val(ancho);
         inputAlto.value = alto;
@@ -93,6 +135,12 @@ function logElement(elm, index) {
     console.log();
 }
 
+
+/**
+ *overloads de jquery default resizable behavior
+ *
+ * @param {div} container
+ */
 function resize(container) {
     container.resize(function () {
         if (container.width() < 65) container.width(65);
@@ -151,7 +199,7 @@ function uuid() {
 
 //devuelve el elemento en el que estoy
 function getCurrentElement(obj) {
-    return $(obj).closest(".Element")
+    return $tab(obj).closest(".Element")
 }
 
 //devuelve contenido del elemento en el que estoy
@@ -165,6 +213,11 @@ function getElementHeader(element) {
 }
 
 function AddElemnt(btn) {
+
+    if (isEditOpen()) {
+        CloseEdit(EDIT_BUTTON);
+    }
+
     var element = getCurrentElement(btn);
     var content = getElementContent(element);
     var $newElement = $($.parseHTML(newElement()));
@@ -186,10 +239,10 @@ function AddElemnt(btn) {
 
     $(content).append($newElement);
 
-    CurrentTab = $('#jqxTabs').jqxTabs('selectedItem');
-    var mainContainer = $($(".MainElement")[CurrentTab]);
+    CURRENT_TAB = $('#jqxTabs').jqxTabs('selectedItem');
+    var mainContainer = $($(".MainElement")[CURRENT_TAB]);
     var mainContntent = $(mainContainer).children(".viewContent:first")
-    $newElement.resizable({ containment: mainContntent }).draggable({containment: mainContntent});
+    $newElement.resizable({ containment: mainContntent }).draggable({ containment: mainContntent });
     $newElement.resizable("option", "handles", "nw");
     $newElement.resize = resize($newElement);
     $newElement.children(".viewHeader").find("#Nombre").val("");
@@ -198,8 +251,11 @@ function AddElemnt(btn) {
 }
 
 function delElemnt(btn) {
+    deleteElementFromJSON(btn);
+    closeAndCleanEdit();
     getCurrentElement(btn).remove();
 }
+ 
 
 function openHeader(btn) {
     var element = getCurrentElement(btn);
@@ -247,28 +303,105 @@ function newElement() {
 }
 
 function openNav() {
-    document.getElementById("myNav").style.height = "130px";
+    document.getElementById("myNav").style.height = "300px";
 }
 
 function closeNav() {
     document.getElementById("myNav").style.height = "0%";
 }
 
-function EditElement(btn) {
-    document.getElementById("mySidenav").style.width = "300px";
-    $(btn).attr("onclick", "CloseEdit(this)")
-    btnEdit = btn;
-    $("#mySidenavElements").html("");
-    jsonSuport.ForEachInJson(generalOptions.viewElementOptions, jsonSuport.CreateElementsForList)
-}
-  
-function CloseEdit(btn) {
-    document.getElementById("mySidenav").style.width = "0";
-    $(btn).attr("onclick", "EditElement(this)")
-    $(btnEdit).attr("onclick", "EditElement(this)")
-    $("#mySidenavElements").html("");
+/**
+ * check if edit menu is open
+ * 
+ * @returns true if open
+ */
+function isEditOpen() {
+    return (document.getElementById("sideMenu").style.width === "300px");
 }
 
+/**
+ * open edit menu an load element options(is seted)
+ * 
+ * @param {button} btn 
+ */
+function EditElement(btn) {
+    document.getElementById("sideMenu").style.width = "300px";
+    $(btn).attr("onclick", "CloseEdit(this)")
+    EDIT_BUTTON = btn;
+    $("#sideMenuContent").html("");
+    jsonSuport.ForEachInJson(generalOptions.viewElementOptions, jsonSuport.CreateElementsForList, "#sideMenuContent", "col-12")
+    loadElementFromJSON(btn);
+}
+
+/**
+ *  close edit menu and clean sets (do not seve then)
+ *
+ * @param {button} btn
+ */
+function CloseEdit(btn) {
+    closeAndCleanEdit();
+    resetEditBtn(btn);
+}
+
+/**
+ *  save element options and cloase edit menu (and clean it)
+ *
+ * @param {button} btn
+ */
+function saveEdit(btn) {
+    saveElementInJSON(btn)
+    CloseEdit(btn);
+}
+
+/**
+ * hide edit menu cleaning its content and setings
+ *
+ */
+function closeAndCleanEdit() {
+    document.getElementById("sideMenu").style.width = "0";
+    $("#sideMenuContent").html("");
+}
+
+/**
+ * reset the presed edit button afer cloasing the edit menu
+ *
+ * @param {button} btn
+ */
+function resetEditBtn(btn) {
+    $(btn).attr("onclick", "EditElement(this)");
+    $(EDIT_BUTTON).attr("onclick", "EditElement(this)");
+}
+
+function saveElementInJSON(btn) {
+    // TODO seve selected element options to project JSON
+}
+
+function loadElementFromJSON(btn) {
+    // TODO load selected element options from project JSON
+}
+
+function deleteElementFromJSON(btn) {
+    // TODO delete selected element options from project JSON
+}
+
+function openProject(btn) {
+    // TODO open project from select file and generate views and elements with its setings
+}
+
+function saveProject(btn) {
+    // TODO delete selected element options from project JSON
+}
+
+function generateProject(btn) {
+    // TODO save the project and send it to the WEB API to generate the output code
+}
+
+/**
+ * validate integer inputs
+ *
+ * @param {event} e
+ * @returns true if its is integer number input
+ */
 function numerico(e) {
     var regex = new RegExp("^[0-9]+$");
     var evt = e || window.event;
@@ -281,19 +414,30 @@ function numerico(e) {
     }
 }
 
-function decimales(e)
-{
+/**
+ * validate decimals inputs
+ *
+ * @param {event} e
+ * @returns true if its is decimal number input
+ */
+function decimales(e) {
     var regex = new RegExp("^[0-9,-]+$");
     var evt = e || window.event;
     var charCode = evt.charCode || evt.keyCode;
 
     var key = String.fromCharCode(charCode);
     if (!regex.test(key)) {
-        //event.preventDefault();
+        // event.preventDefault();
         return false;
     }
 }
 
+/**
+ * validate positve integer inputs
+ *
+ * @param {event} e
+ * @returns true if its is a positive number input
+ */
 function EnterosPositivos(e) {
     var regex = new RegExp("^[0-9]+$");
     var evt = e || window.event;
@@ -301,12 +445,12 @@ function EnterosPositivos(e) {
 
     var key = String.fromCharCode(charCode);
     if (!regex.test(key)) {
-        //event.preventDefault();
+        // event.preventDefault();
         return false;
     }
 }
 
-$(document).ready(function () {
+$(function () {
 
     var addButton,
         addButtonWidth = 29,
@@ -332,18 +476,41 @@ $(document).ready(function () {
         if (event.args.item == count - 1) {
             $('#jqxTabs').jqxTabs('addAt', event.args.item, 'vista ' + count,
                 'Sample content number: ' + count);
-            //Manual initialization
-            //Commented because initialization is set in initTabContent event
+            // Manual initialization
+            // Commented because initialization is set in initTabContent event
             loadPage('viewEditor.html', count);
         }
     });
+
+    // createing ddbb emgine options
+    jsonSuport.ForEachInJson(generalOptions.projectSetings, jsonSuport.CreateElementsForList, ".overlay-content", "col-2")
 });
 
-var loadPage = function (url, tabIndex) {
+
+ /**
+  *loads html files to tab
+  *
+  * @param {string} url
+  * @param {number} tabIndex
+  */
+ function loadPage(url, tabIndex) {
     console.log('Loading page via Ajax.')
     $.get(url, function (data) {
         $('#jqxTabs').jqxTabs('setContentAt', tabIndex - 1, data);
         set();
     });
+}
 
+/**
+ *set DB connections Parameters when selected engine changed
+ *
+ * @param {input select} select
+ * @param {generalOptions.engines} obj
+ */
+function setEngine(select, obj) {
+    console.log("engine changed");
+    $(".overlay-content").html("");
+    if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "conectionParameters")) {
+        jsonSuport.ForEachInJson(obj[select.value - 1].conectionParameters, jsonSuport.CreateElementsForList, ".overlay-content", "col-2");
+    }
 }

@@ -36,23 +36,35 @@ var jsonSuport = {
 		}
 		else{return false;}
 	},
-	ForEachInJson: function(list, ExecuteFunction ){
+	ForEachInJson: function(list, ExecuteFunction, whereSelector = undefined, cols = undefined ){
 		for (var i = 0; i < list.length; i++) { 
-			ExecuteFunction(list[i]);
+			if(whereSelector === undefined)	{
+				ExecuteFunction(list[i]);
+			} else if (whereSelector !== undefined  && cols === undefined)  {
+				ExecuteFunction(list[i],whereSelector);
+			} else if (whereSelector !== undefined  && cols !== undefined)  {
+				ExecuteFunction(list[i],whereSelector, cols);
+			}
 		}
 	},
-	CreateElementsForList: function(obj){
-		var menu =  $("#mySidenavElements");
+	CreateElementsForList: function(obj,whereSelector, cols = undefined ){
+		if (cols === undefined) {
+			cols = "col-12"
+		}
+		var menu = $(whereSelector); 
 		console.log("creating element: " +  obj.name + ", type: "  + obj.type)
 		if(obj.type == "select")
 		{
-			if(jsonSuport.HasProprty(generalOptions, obj.options)){
-			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.name,null,"col-12");
+			if (obj.name === "controlType") {
+				jsonSuport.CreateSelectForList(menu,SELECTED_PLATAFORM_CONTRLS, obj.name,null,cols);
+			}
+			else if(jsonSuport.HasProprty(generalOptions, obj.options)) {
+			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.name,null,cols);
 			}
 		}
 		if(obj.type == "text")
 		{
-			jsonSuport.CreateInputText(menu,obj.options, obj.name,null,"col-12");
+			jsonSuport.CreateInputText(menu,obj.options, obj.name,null,cols);
 		}
 	},
 	CreateInputText: function(ParentElementHeader,options,text,onchangeFunc,col){
@@ -108,6 +120,9 @@ var jsonSuport = {
 			if(this.HasProprty(obj[0],"orientation")){
 				jsonSuport.CreateSelectForList(ParentElementHeader,obj[0].orientation, "orientation");
 			}
+			if(this.HasProprty(obj[0],"conectionParameters")){
+			 	jsonSuport.ForEachInJson(obj[0].conectionParameters, jsonSuport.CreateElementsForList, ".overlay-content", "col-2");
+			}
         }
 	},
 	PopulateSelectFromList: function(select,obj,text){
@@ -116,7 +131,8 @@ var jsonSuport = {
 		}
 		if(this.isArray(obj)){
 			$.each(obj, function(i, p) {
-				$(select).append($('<option></option>').val(p.id).html(p.name));
+				var option = document.createElement("option");
+				$(select).append($(option).val(p.id).html(p.name));
 			});
 			if(obj.length == 1){
                 $(select).val(1);

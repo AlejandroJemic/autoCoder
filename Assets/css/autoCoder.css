@@ -35,7 +35,7 @@
 }
 .overlay {
     height: 0%;
-    width: 95%;
+    width: 98%;
     position: fixed;
     z-index: 20000;
     top: 0;
@@ -43,13 +43,13 @@
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0, 0.9);
     overflow: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
   }
   
   .overlay-content {
     position: relative;
-    top: 30%;
-    width: 90%;
+    top: 17%;
+    width: 98%;
     text-align: left;
     margin-top: 10px;
     overflow: hidden;
@@ -61,7 +61,7 @@
     font-size: 16px;
     color: #818181;
     display: block;
-    transition: 0.3s;
+    transition: 0.2s;
   }
   
   .overlay a:hover, .overlay a:focus {
@@ -75,7 +75,28 @@
     font-size: 40px;
     width: 10%;
   }
-  
+
+  .overlay .generatebtn {
+    position: absolute;
+    top: 15px !important;
+    right: 15px !important;
+    margin-right: 5px !important;
+  }
+
+  .overlay .savebtn {
+    position: absolute;
+    top: 15px !important;
+    right: 70px !important;
+    margin-right: 5px !important;
+  }
+
+  .overlay .openbtn {
+    position: absolute;
+    top: 15px !important;
+    right: 125px !important;
+    margin-right: 5px !important;
+  }
+
   @media screen and (max-height: 450px) {
     .overlay {overflow-y: auto;}
     .overlay a {font-size: 20px}
@@ -90,7 +111,7 @@
 
 
   /* menu a la derecha */
-  .sidenav {
+  .sideMenu {
     height: 100%;
     width: 0;
     position: fixed;
@@ -99,7 +120,7 @@
     right: 0;
     background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
     padding-top: 60px;
   }
 
@@ -107,29 +128,35 @@
      padding: 10px !important;
   }
   
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
+  .sideMenu a {
+    padding: 8px 8px 8px 8px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s;
+    transition: 0.2s;
   }
   
-  .sidenav a:hover {
+  .sideMenu a:hover {
     color: #f1f1f1;
   }
   
-  .sidenav .closebtn {
+  .sideMenu .savebtn {
+    position: absolute;
+    top: 15px !important;
+    left: 5px !important;
+    margin-left: 5px !important;
+  }
+  .sideMenu .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
+    right: 5px;
     font-size: 36px;
     margin-left: 50px;
   }
   
   @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sideMenu {padding-top: 15px;}
+    .sideMenu a {font-size: 18px;}
   }
   /* fin menu a la derecha */

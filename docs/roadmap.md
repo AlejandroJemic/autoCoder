@@ -2,7 +2,9 @@
 * [x] agregar contexto tab local o elemento local a las busquedas de elementos
 * [x] agregar parametros coneccion ddbb en menu general
 * [x] definir estructura json proyecto (vista)
-* [ ] agregar opciones de cada elemento
+* [x] agregar opciones de cada elemento
+* [x] eliminar opciones de cada elemento al eliminarlo
+  * [ ] eliminar datos del elemnto del json
 * [ ] agregar guardar proyecto como json (vista)
   * [ ] leer setings de cada tab
   * [ ] leer elemntos de cada tab(recursivo)

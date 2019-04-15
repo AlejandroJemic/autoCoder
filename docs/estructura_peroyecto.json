@@ -1,5 +1,5 @@
 {
-    "project_Name": "proyecto1",
+    "projectName": "proyecto1",
     "version": 1,
     "bbdd": {
       "datasource": "sdatasourse",

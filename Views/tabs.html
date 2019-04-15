@@ -30,26 +30,29 @@
     <span class="openMenuBtn" onclick="openNav()">&#9776;</span>
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="overlay-content">
-            <div class='d-inline-flex card-header'>
-                <input id='datasource' type='text' value='' class='form-control' name='datasource' placeholder='datasource' />
-                <input id='username' type='text' value='' class='form-control' name='username' placeholder='username' />
-                <input id='password' type='text' value='' class='form-control' name='password' placeholder='password' />
-                <input id='catalog' type='text' value='' class='form-control' name='catalog' placeholder='catalog' />
-                <input id='engine' type='text' value='' class='form-control' name='engine' placeholder='engine' />
-            </div>
+        <input type="file" style="display:none;" id="inputfile"/>
+        <button type='button' id='btnOpenProject' onclick='openProject(this);' class='btn btn-primary float-right openbtn'><img
+            src='../assets/imgs/openProject.png' alt='OpenProject' style='width: 23px;' /></button>
+        <button type='button' id='btnSavePropject' onclick='saveProject(this);' class='btn btn-success float-left savebtn'><img
+            src='../assets/imgs/save.png' alt='save' style='width: 23px;' /></button>
+        <button type='button' id='btnSavePropject' onclick='generateProject(this);' class='btn btn-success float-left generatebtn'><img
+            src='../assets/imgs/generateProject.png' alt='generate' style='width: 24px;' /></button>
+        <div class="overlay-content form-inline">
         </div>
     </div>
-    <div id="mySidenav" class="sidenav">
+    <div id="sideMenu" class="sideMenu">
+        <button type='button' id='btnsave' onclick='saveEdit(this);' class='btn btn-success float-left savebtn'><img
+            src='../assets/imgs/save.png' alt='save' style='width: 23px;' /></button>
         <a href="javascript:void(0)" class="closebtn" onclick="CloseEdit()">&times;</a>
-        <div id="mySidenavElements" class="sidenavContent"></div>
+        <div id="sideMenuContent" class="sidenavContent">
+        </div>
     </div>
 
     <div id='jqxWidget'>
         <div id='jqxTabs' style="float: left;">
             <ul style="margin-left: 30px;" id="unorderedList">
                 <li>vista 1</li>
-                <li canselect='false' hasclosebutton='false'>Add New Tab</li>
+                <li canselect='false' hasclosebutton='false'>Add New View</li>
             </ul>
             <div>
             </div>
@@ -58,5 +61,4 @@
         </div>
     </div>
 </body>
-
 </html>
