@@ -1,7 +1,7 @@
 var CURRENT_TAB = 0;
 var MAIN_CONTAINER;
 var EDIT_BUTTON;
-var SELECTED_PLATAFORM_CONTROLS
+var SELECTED_PLATAFORM_CONTROLS = new Array();
 
 function getContext() {
     CURRENT_TAB = $('#jqxTabs').jqxTabs('selectedItem');
@@ -19,38 +19,38 @@ function getCurrentViewPlataform() {
 function setCurrentViewControls() {
     switch (getCurrentViewPlataform()) {
          case "1": // html
-            SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
+            SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = generalOptions.htmlControlTypes;
              break;
         case "2": //.net
             if ($tab("#output").val() === "1" && $tab("#options").val() === "1") { // aspx web page
-                SELECTED_PLATAFORM_CONTROLS = generalOptions.webFormsControlTypes;
+                SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = generalOptions.aspxControlTypes;
             }
             if ($tab("#output").val() === "1" && $tab("#options").val() === "2") { // mvc web page
-                SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
+                SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = generalOptions.htmlControlTypes;
             }
             break;
         case "3": // nodejs
             if ($tab("#output").val() === "1" ) {
-                SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
+                SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = generalOptions.htmlControlTypes;
             }
             break;
         case "4": // android
-            SELECTED_PLATAFORM_CONTROLS = generalOptions.androidControlTypes;
+            SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = generalOptions.androidControlTypes;
             break;
         case "5": // ios
-            SELECTED_PLATAFORM_CONTROLS = generalOptions.iosControlTypes;
+            SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = generalOptions.iosControlTypes;
             break;
          default:
-            SELECTED_PLATAFORM_CONTROLS = generalOptions.htmlControlTypes;
+            SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = generalOptions.htmlControlTypes;
              break;
     }
     
-    var select =  $("#sideMenu").children("#controlType");
-    jsonSuport.PopulateSelectFromList(select,SELECTED_PLATAFORM_CONTROLS,"controlType");
+    var select =  $("#sideMenu").find("#controlType");
+    jsonSuport.PopulateSelectFromList(select,SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB],"controlType");
 }
 
 function set() {
-    SELECTED_PLATAFORM_CONTROLS = undefined;
+    SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB] = undefined;
     getContext();
     var sid = setid(MAIN_CONTAINER);
     var inputAlto = $(MAIN_CONTAINER).find("#alto");
@@ -106,7 +106,7 @@ function setOpciones(select, obj) {
     $tab("#sizes").remove();
     $tab("#orientation").remove();
     if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "options")) {
-        jsonSuport.CreateSelectForList(div, obj[select.value - 1].options, "options", null);
+        jsonSuport.CreateSelectForList(div, obj[select.value - 1].options, "options", OptionsChanged);
     }
     if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "screenSizes")) {
         jsonSuport.CreateSelectForList(div, obj[select.value - 1].screenSizes, "sizes", setSize);
@@ -114,6 +114,10 @@ function setOpciones(select, obj) {
     if (select.value > 0 && jsonSuport.HasProprty(obj[select.value - 1], "orientation")) {
         jsonSuport.CreateSelectForList(div, obj[select.value - 1].orientation, "orientation");
     }
+    setCurrentViewControls();
+}
+
+function OptionsChanged() {
     setCurrentViewControls();
 }
 
@@ -343,6 +347,9 @@ function EditElement(btn) {
  *
  * @param {button} btn
  */
+
+
+     
 function CloseEdit(btn) {
     closeAndCleanEdit();
     resetEditBtn(btn);
@@ -479,7 +486,7 @@ $(function () {
     $('#jqxTabs').on('tabclick', function (event) {
         var count = $('#unorderedList').find('li').length;
         if (event.args.item == count - 1) {
-            $('#jqxTabs').jqxTabs('addAt', event.args.item, 'vista ' + count,
+            $('#jqxTabs').jqxTabs('addAt', event.args.item, 'view ' + count,
                 'Sample content number: ' + count);
             // Manual initialization
             // Commented because initialization is set in initTabContent event
@@ -489,6 +496,30 @@ $(function () {
 
     // createing ddbb emgine options
     jsonSuport.ForEachInJson(generalOptions.projectSetings, jsonSuport.CreateElementsForList, ".overlay-content", "col-2")
+
+
+    $('#jqxTabs').on('selecting', function (event) {
+        CURRENT_TAB = event.args.item;
+        CloseEdit();
+    });
+
+    $('#jqxTabs').on('add', function (event) {
+        CURRENT_TAB = $('#jqxTabs').jqxTabs('selectedItem');
+        CloseEdit();
+    });
+
+    $('#jqxTabs').on('tabclick', function (event) { 
+        CURRENT_TAB = event.args.item; 
+        CloseEdit();
+    });
+
+    $('#jqxTabs').on('removed', function (event) {
+        CloseEdit();
+    });
+
+    $('#jqxTabs').on('dragEnd', function (event) {
+        CloseEdit();
+    });
 });
 
 

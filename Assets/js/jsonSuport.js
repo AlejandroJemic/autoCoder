@@ -56,7 +56,7 @@ var jsonSuport = {
 		if(obj.type == "select")
 		{
 			if (obj.name === "controlType") {
-				jsonSuport.CreateSelectForList(menu,SELECTED_PLATAFORM_CONTROLS, obj.name,null,cols);
+				jsonSuport.CreateSelectForList(menu,SELECTED_PLATAFORM_CONTROLS[CURRENT_TAB], obj.name,null,cols);
 			}
 			else if(jsonSuport.HasProprty(generalOptions, obj.options)) {
 			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.name,null,cols);
