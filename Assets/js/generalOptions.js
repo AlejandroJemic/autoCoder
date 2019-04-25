@@ -512,18 +512,18 @@ var generalOptions={
 			"name": "fontName"
 		},
 		{
-			"type": "text",
-			"options": "string",
+			"type": "select",
+			"options": "",
 			"name": "asossiatedTable"
 		},
 		{
-			"type": "text",
+			"type": "select",
 			"options": "string",
 			"name": "associatedField"
 		},
 		{
 			"type": "text",
-			"options": "string",
+			"options": "",
 			"name": "whereFilter"
 		},
 		{
@@ -1726,7 +1726,13 @@ var generalOptions={
 			"id": 34,
 			"name": "Text Fields"
 		}
-	]
+	],
+	"defaultbaseReuqest": {
+		"datasource" : "des1067.tecnova.cl",
+		"username": "user_armk",
+		"password": "armk.20185",
+		"catalog": "armk_ats_f2"
+}
 }
 
 

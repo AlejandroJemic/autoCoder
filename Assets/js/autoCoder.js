@@ -2,6 +2,9 @@ var CURRENT_TAB = 0;
 var MAIN_CONTAINER;
 var EDIT_BUTTON;
 var SELECTED_PLATAFORM_CONTROLS = new Array();
+const __BASE_SERVICE_URL__ =  'https://localhost/Generador.Api/api';
+var DATABASE_MODEL
+var TABLES_LIST = new Array();
 
 function getContext() {
     CURRENT_TAB = $('#jqxTabs').jqxTabs('selectedItem');
@@ -340,6 +343,7 @@ function EditElement(btn) {
     $("#sideMenuContent").html("");
     jsonSuport.ForEachInJson(generalOptions.viewElementOptions, jsonSuport.CreateElementsForList, "#sideMenuContent", "col-12")
     loadElementFromJSON(btn);
+    listTablesFromDatabaseModel();
 }
 
 /**
@@ -384,6 +388,7 @@ function resetEditBtn(btn) {
     $(EDIT_BUTTON).attr("onclick", "EditElement(this)");
 }
 
+
 function saveElementInJSON(btn) {
     // TODO seve selected element options to project JSON
 }
@@ -407,6 +412,81 @@ function saveProject(btn) {
 function generateProject(btn) {
     // TODO save the project and send it to the WEB API to generate the output code
 }
+
+
+function getDatabaseModel(){
+    const modelServiceURL = __BASE_SERVICE_URL__ + '/model' ;
+
+    if ( $('#datasource').val() !== '' && $('#username').val() !== '' && $('#password').val() !== '' && $('#catalog').val() !== '') {
+        var baseReuqest = {
+            "datasource" : $('#datasource').val(),
+            "username" : $('#username').val(),
+            "password" : $('#password').val(),
+            "catalog" : $('#catalog').val()
+        };
+
+        $.ajax({
+            url: modelServiceURL,
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(baseReuqest),
+            success: function (data) {
+                if(data.status === 'Ok') {
+                    DATABASE_MODEL = data.data.tables;
+                    // console.log(DATABASE_MODEL);
+                    console.log('databes model geted susfull');
+                }
+                else if(data.status === 'Error') {
+                    console.error( 'error geting database model: ' +  data.status_message);
+                }
+            },
+            error: function(error) {
+                console.error( 'error geting database model: ' + error );
+            }
+        });
+   }
+}
+function split( val ) {
+    return val.split( /,\s*/ );
+  }
+
+function extractLast( term ) {
+    return split( term ).pop();
+}
+
+function listTablesFromDatabaseModel() {
+    TABLES_LIST = [];
+    for (var i = 0; i < DATABASE_MODEL.length; i++) { 
+        TABLES_LIST.push( {"id": i, "name": DATABASE_MODEL[i].name});
+    }
+
+    jsonSuport.PopulateSelectFromList($("#asossiatedTable"),TABLES_LIST, "select table");
+
+        
+
+
+    // $("#asossiatedTable").autocomplete({
+    //         minLength: 0,
+    //         source: function( request, response ) {
+    //             response( $.ui.autocomplete.filter(
+    //                 TABLES_LIST, extractLast( request.term ) ) );
+    //         },
+    //         focus: function() {
+    //             return false;
+    //         },
+    //     select: function( event, ui ) {
+    //         var terms = split( this.value );
+    //         terms.pop();
+    //         terms.push( ui.item.value );
+    //         terms.push( "" );
+    //         this.value = terms.join( ", " );
+    //         return false;
+    //     }
+    // });
+}
+
+
 
 /**
  * validate integer inputs
@@ -497,7 +577,29 @@ $(function () {
     // createing ddbb emgine options
     jsonSuport.ForEachInJson(generalOptions.projectSetings, jsonSuport.CreateElementsForList, ".overlay-content", "col-2")
 
+    //load default databse request params
+    $('#datasource').val(generalOptions.defaultbaseReuqest.datasource);
+    $('#username').val(generalOptions.defaultbaseReuqest.username);
+    $('#password').val(generalOptions.defaultbaseReuqest.password);
+    $('#catalog').val(generalOptions.defaultbaseReuqest.catalog);
+    getDatabaseModel();
 
+    //#region control database conecction changes
+    $('#datasource').blur(function(e){
+        getDatabaseModel();
+    });
+    $('#username').blur(function(e){
+        getDatabaseModel();
+    });
+    $('#password').blur(function(e){
+        getDatabaseModel();
+    });
+    $('#catalog').blur(function(e){
+        getDatabaseModel();
+    });
+    //#endregion 
+
+    //#region control tabs events
     $('#jqxTabs').on('selecting', function (event) {
         CURRENT_TAB = event.args.item;
         CloseEdit();
@@ -520,6 +622,7 @@ $(function () {
     $('#jqxTabs').on('dragEnd', function (event) {
         CloseEdit();
     });
+    
 });
 
 

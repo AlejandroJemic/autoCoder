@@ -61,6 +61,9 @@ var jsonSuport = {
 			else if(jsonSuport.HasProprty(generalOptions, obj.options)) {
 			    jsonSuport.CreateSelectForList(menu,generalOptions[obj.options], obj.name,null,cols);
 			}
+			else if(obj.options === '')	{
+				jsonSuport.CreateSelectForList(menu,null, obj.name,null,cols);
+			}
 		}
 		if(obj.type == "text")
 		{
@@ -91,7 +94,7 @@ var jsonSuport = {
 		}
 		$(ParentElementHeader).append(inputText);
 	},
-	CreateSelectForList: function(ParentElementHeader,obj,text,onchangeFunc,col){
+	CreateSelectForList: function(ParentElementHeader,list,text,onchangeFunc,col){
 		var select = document.createElement("select");
 		$(select).addClass("form-control select");
 		if(col != null){
@@ -107,21 +110,21 @@ var jsonSuport = {
 		$(select).attr("name", text);
 		if(onchangeFunc != null){
             if(this.isFunction(onchangeFunc)){
-                $(select).change(function(){ onchangeFunc(select,obj); });
+                $(select).change(function(){ onchangeFunc(select,list); });
 		    }
 	    }
 
-		this.PopulateSelectFromList(select,obj,text);
+		this.PopulateSelectFromList(select,list,text);
         $(ParentElementHeader).append(select);
-        if(obj.length == 1){
-            if(this.HasProprty(obj[0],"screenSizes")){
-                this.CreateSelectForList(ParentElementHeader,obj[0].screenSizes, "sizes", setSize);
+        if(list.length == 1){
+            if(this.HasProprty(list[0],"screenSizes")){
+                this.CreateSelectForList(ParentElementHeader,list[0].screenSizes, "sizes", setSize);
 			}
-			if(this.HasProprty(obj[0],"orientation")){
-				jsonSuport.CreateSelectForList(ParentElementHeader,obj[0].orientation, "orientation");
+			if(this.HasProprty(list[0],"orientation")){
+				jsonSuport.CreateSelectForList(ParentElementHeader,list[0].orientation, "orientation");
 			}
-			if(this.HasProprty(obj[0],"conectionParameters")){
-			 	jsonSuport.ForEachInJson(obj[0].conectionParameters, jsonSuport.CreateElementsForList, ".overlay-content", "col-2");
+			if(this.HasProprty(list[0],"conectionParameters")){
+			 	jsonSuport.ForEachInJson(list[0].conectionParameters, jsonSuport.CreateElementsForList, ".overlay-content", "col-2");
 			}
         }
 	},
