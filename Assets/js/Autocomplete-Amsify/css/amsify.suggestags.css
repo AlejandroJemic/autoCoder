@@ -61,7 +61,7 @@
 	position: absolute;
 	background: white;
 	border: 1px solid #dedede;
-	z-index: 1;
+	z-index:  10000 !important;
 }
 
 .amsify-suggestags-area
@@ -70,7 +70,8 @@ ul.amsify-list {
 	list-style: none;
 	padding: 3px 0px;
 	max-height: 150px;
-    overflow-y: auto;
+	overflow-y: auto;
+	z-index:  10000 !important;
 }
 
 .amsify-suggestags-area
@@ -79,7 +80,8 @@ ul.amsify-list
 li.amsify-list-item {
 	text-align: left;
     cursor: pointer;
-    padding: 0px 10px;	
+	padding: 0px 10px;	
+	z-index:  10000 !important;
 }
 
 .amsify-suggestags-area
@@ -90,7 +92,8 @@ li.amsify-list-item:active {
     color: white;
     -moz-box-shadow:    inset 0 0 10px #000000;
     -webkit-box-shadow: inset 0 0 10px #000000;
-    box-shadow:         inset 0 0 10px #000000;
+	box-shadow:         inset 0 0 10px #000000;
+	z-index:  10000 !important;
 }
 
 .amsify-suggestags-area
@@ -99,14 +102,15 @@ ul.amsify-list
 li.amsify-list-group {
 	text-align: left;
     padding: 0px 10px;
-    font-weight: bold;
+	font-weight: bold;
+	z-index:  10000 !important;
 }
 
 .amsify-suggestags-area
 .amsify-suggestags-list
 ul.amsify-list
 li.amsify-item-pad {
-    padding-left: 30px;
+    padding-left: 10px;
 }
 
 .amsify-suggestags-area
@@ -130,6 +134,7 @@ li.amsify-item-noresult {
 ul.amsify-list
 li.active {
 	background: #d9d8d8;
+	z-index:  10000 !important;
 }
 
 .amsify-suggestags-area

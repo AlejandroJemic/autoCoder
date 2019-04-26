@@ -512,12 +512,12 @@ var generalOptions={
 			"name": "fontName"
 		},
 		{
-			"type": "select",
-			"options": "",
+			"type": "text",
+			"options": "string",
 			"name": "asossiatedTable"
 		},
 		{
-			"type": "select",
+			"type": "text",
 			"options": "string",
 			"name": "associatedField"
 		},
@@ -1728,10 +1728,10 @@ var generalOptions={
 		}
 	],
 	"defaultbaseReuqest": {
-		"datasource" : "des1067.tecnova.cl",
+		"datasource" : "PC-ASUS-ALEJAND\\SQLEXPRESS2",
 		"username": "user_armk",
-		"password": "armk.20185",
-		"catalog": "armk_ats_f2"
+		"password": "armk.20184",
+		"catalog": "armk_ats"
 }
 }
 

@@ -435,14 +435,14 @@ function getDatabaseModel(){
                 if(data.status === 'Ok') {
                     DATABASE_MODEL = data.data.tables;
                     // console.log(DATABASE_MODEL);
-                    console.log('databes model geted susfull');
+                    console.log('database model gets successful');
                 }
                 else if(data.status === 'Error') {
                     console.error( 'error geting database model: ' +  data.status_message);
                 }
             },
             error: function(error) {
-                console.error( 'error geting database model: ' + error );
+                console.error( 'error geting database model');
             }
         });
    }
@@ -458,13 +458,17 @@ function extractLast( term ) {
 function listTablesFromDatabaseModel() {
     TABLES_LIST = [];
     for (var i = 0; i < DATABASE_MODEL.length; i++) { 
-        TABLES_LIST.push( {"id": i, "name": DATABASE_MODEL[i].name});
+        // TABLES_LIST.push( {"id": i, "name": DATABASE_MODEL[i].name});
+        TABLES_LIST.push(DATABASE_MODEL[i].name);
     }
-
-    jsonSuport.PopulateSelectFromList($("#asossiatedTable"),TABLES_LIST, "select table");
-
-        
-
+    // load table list for elmement options
+    if ($("#asossiatedTable").length) { // if exist
+        $('#asossiatedTable').amsifySuggestags({
+            type : 'amsify',
+            suggestions: TABLES_LIST
+        });
+    }
+    //jsonSuport.PopulateSelectFromList($("#asossiatedTable"),TABLES_LIST, "select table");
 
     // $("#asossiatedTable").autocomplete({
     //         minLength: 0,
@@ -598,6 +602,15 @@ $(function () {
         getDatabaseModel();
     });
     //#endregion 
+
+    // load table list for elmement options
+    if ($("#asossiatedTable").length) { // if exist
+        // $('#asossiatedTable').amsifySuggestags({
+        //     type : 'amsify',
+        //     suggestions: TABLES_LIST
+        // });
+    }
+        
 
     //#region control tabs events
     $('#jqxTabs').on('selecting', function (event) {
