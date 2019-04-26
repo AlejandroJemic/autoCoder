@@ -337,6 +337,7 @@ function isEditOpen() {
  * @param {button} btn 
  */
 function EditElement(btn) {
+    
     document.getElementById("sideMenu").style.width = "300px";
     $(btn).attr("onclick", "CloseEdit(this)")
     EDIT_BUTTON = btn;
@@ -582,10 +583,10 @@ $(function () {
     jsonSuport.ForEachInJson(generalOptions.projectSetings, jsonSuport.CreateElementsForList, ".overlay-content", "col-2")
 
     //load default databse request params
-    $('#datasource').val(generalOptions.defaultbaseReuqest.datasource);
-    $('#username').val(generalOptions.defaultbaseReuqest.username);
-    $('#password').val(generalOptions.defaultbaseReuqest.password);
-    $('#catalog').val(generalOptions.defaultbaseReuqest.catalog);
+    $('#datasource').val(generalOptions.defaultBaseRequest.datasource);
+    $('#username').val(generalOptions.defaultBaseRequest.username);
+    $('#password').val(generalOptions.defaultBaseRequest.password);
+    $('#catalog').val(generalOptions.defaultBaseRequest.catalog);
     getDatabaseModel();
 
     //#region control database conecction changes

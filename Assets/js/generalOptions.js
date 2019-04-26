@@ -1727,11 +1727,11 @@ var generalOptions={
 			"name": "Text Fields"
 		}
 	],
-	"defaultbaseReuqest": {
-		"datasource" : "PC-ASUS-ALEJAND\\SQLEXPRESS2",
+	"defaultBaseRequest": {
+		"datasource" : "des1067.tecnova.cl",
 		"username": "user_armk",
-		"password": "armk.20184",
-		"catalog": "armk_ats"
+		"password": "armk.20185",
+		"catalog": "armk_ats_f2"
 }
 }
 

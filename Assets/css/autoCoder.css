@@ -115,7 +115,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 999;
+    z-index: 11000;
     top: 0;
     right: 0;
     background-color: #111;
@@ -154,7 +154,7 @@
     font-size: 36px;
     margin-left: 50px;
   }
-  
+ 
   @media screen and (max-height: 450px) {
     .sideMenu {padding-top: 15px;}
     .sideMenu a {font-size: 18px;}
